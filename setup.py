@@ -25,7 +25,7 @@ setuptools.setup(
     bugtrack_url = __bugtrack_url__,
     install_requires = read_file('./requirements/python').splitlines(),
     packages = ['omdb'],
-    long_description = read_file('README.md'),
+    long_description = read_file('README.rst'),
     classifiers = [
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
