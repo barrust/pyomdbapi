@@ -1,7 +1,7 @@
-PyOMDBApi
+pyomdbapi
 ===========
 
-OMDB API python wrapper
+A simple OMDB API python wrapper
 
 Installation
 ------------------
