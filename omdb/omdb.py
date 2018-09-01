@@ -1,6 +1,7 @@
+''' OMDB API python wrapper library '''
 import requests
 
-from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached
+from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults
 
 
 class OMDB(object):
@@ -187,7 +188,15 @@ class OMDB(object):
             # convert camel case to lowercase
             res[key.lower()] = val
 
+        # NOTE: I dislike having to use string comparisons to check for specific error conditions
         if 'response' in res and res['response'] == 'False':
-            raise OMDBNoResults(res['error'], params)
+            err = res.get('error', '').lower()
+            if err == 'too many results.':
+                raise OMDBTooManyResults(res['error'], params)
+            elif err == 'movie not found!':
+                raise OMDBNoResults(res['error'], params)
+            elif err == 'request limit reached!':
+                raise OMDBLimitReached(self._api_key)
+            raise OMDBException('An unknown exception was returned: {}'.format(err))
 
         return res

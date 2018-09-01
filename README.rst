@@ -3,6 +3,12 @@ pyomdbapi
 
 A simple OMDB API python wrapper
 
+Documenation
+-------------------------------------------------------------------------------
+
+Online documentation can be found on `readthedocs.org <https://pyomdbapi.readthedocs.io/en/latest/>`__.
+
+
 Installation
 ------------------
 

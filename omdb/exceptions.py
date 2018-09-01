@@ -1,5 +1,6 @@
 ''' Exceptions for the pyomdbapi project '''
 
+
 class OMDBException(Exception):
     ''' Base OMDB Exception
 
@@ -29,6 +30,30 @@ class OMDBNoResults(OMDBException):
         self._params = params
         self._error = error
         super(OMDBNoResults, self).__init__('message: {}\tparams: {}'.format(self._error, self._params))
+
+    @property
+    def error(self):
+        ''' str: The OMDB API exception message '''
+        return self._message
+
+    @property
+    def params(self):
+        ''' dict: The parameters used when the exception was raised '''
+        return self._params
+
+
+class OMDBTooManyResults(OMDBException):
+    ''' Too many results would be returned (per the OMDB API)
+
+        Args:
+            error (str): The error message returned by the OMDB API service
+            params (dict): The parameters used when the exception was raised
+    '''
+    def __init__(self, error, params):
+        ''' init '''
+        self._params = params
+        self._error = error
+        super(OMDBTooManyResults, self).__init__('message: {}\tparams: {}'.format(self._error, self._params))
 
     @property
     def error(self):
