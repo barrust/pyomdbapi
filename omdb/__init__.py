@@ -1,3 +1,4 @@
+''' the omdb module '''
 
 from .omdb import OMDB
 from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached

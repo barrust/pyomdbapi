@@ -34,7 +34,7 @@ Basic Usage
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 To use ``pyomdbapi`` you will need to get an API key from the OMDB API site.
-The keys are free to use so please `sign up<http://www.omdbapi.com/>`__!
+The keys are free to use so please `sign up <http://www.omdbapi.com/>`__!
 
 Now that you have an API key and have activated it; we can begin using
 pyomdbapi:
