@@ -92,7 +92,7 @@ class OMDB(object):
         for key in keys:
             val = res.pop(key)
             if isinstance(val, dict):
-                val = self.format_results(val, params)
+                val = self.__format_results(val, params)
             if isinstance(val, list):
                 tmp = list()
                 for _, itm in enumerate(val):
