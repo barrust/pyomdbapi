@@ -32,8 +32,7 @@ class OMDB(object):
                 title (str): The query string to lookup
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
-                dict: A dictionary of all the results
-        '''
+                dict: A dictionary of all the results '''
         params = {
             's': title,
             'apikey': self._api_key
@@ -44,7 +43,8 @@ class OMDB(object):
         return self.__format_results(data, params)
 
     def get(self, title=None, imdbid=None, **kwargs):
-        '''
+        ''' Retrieve a specific movie, series, or episode
+
             Args:
                 title (str): The title of the movie, series, or episode to return
                 imdbid (str): The IMDB Id to use to pull the result
@@ -54,8 +54,7 @@ class OMDB(object):
             Raises:
                 OMDBException: Raised when both title or imdbid is not provided
             Note:
-                Either `title` or `imdbid` is required
-        '''
+                Either `title` or `imdbid` is required '''
         params = {
             'apikey': self._api_key
         }
@@ -72,32 +71,73 @@ class OMDB(object):
         return self.__format_results(data, params)
 
     def search_movie(self, title, **kwargs):
+        ''' Search for a movie by title
+
+            Args:
+                title (str): The name, or part of a name, of the movie to look up
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results '''
         params = {'type': 'movie'}
         params.update(kwargs)
         data = self.search(title, **params)
         return self.__format_results(data, params)
 
     def search_series(self, title, **kwargs):
+        ''' Search for a TV series by title
+
+            Args:
+                title (str): The name, or part of a name, of the TV series to look up
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results '''
         params = {'type': 'series'}
         params.update(kwargs)
         return self.search(title, **params)
 
-    # def search_episode(self, title, **params):
-    #     params = {'type': 'episode'}
-    #     params.update(params)
-    #     return self.search(title, **params)
-
     def get_movie(self, title=None, imdbid=None, **kwargs):
+        ''' Retrieve a movie by title or IMDB id
+
+            Args:
+                title (str): The name of the movie to retrieve
+                imdbid (str): The IMDB id of the movie to retrieve
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results
+            Note:
+                Either `title` or `imdbid` is required '''
         params = {'type': 'movie'}
         params.update(kwargs)
         return self.get(title, imdbid, **params)
 
     def get_series(self, title=None, imdbid=None, **kwargs):
+        ''' Retrieve a TV series information by title or IMDB id
+
+            Args:
+                title (str): The name of the movie to retrieve
+                imdbid (str): The IMDB id of the movie to retrieve
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results
+            Note:
+                Either `title` or `imdbid` is required '''
         params = {'type': 'series'}
         params.update(kwargs)
         return self.get(title, imdbid, **params)
 
     def get_episode(self, title=None, imdbid=None, season=1, episode=1, **kwargs):
+        ''' Retrieve a TV series episode by title or IMDB id and season and episode number
+
+            Args:
+                title (str): The name of the movie to retrieve
+                imdbid (str): The IMDB id of the movie to retrieve
+                season (int): The season number of the episode to retrieve
+                episode (int): The episode number (based on season) of the episode to retrieve
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results
+            Note:
+                Either `title` or `imdbid` is required '''
         params = {'type': 'episode'}
         if season:
             params['Season'] = season
@@ -107,15 +147,28 @@ class OMDB(object):
         return self.get(title, imdbid, **params)
 
     def get_episodes(self, title=None, imdbid=None, season=1, **kwargs):
+        ''' Retrieve all episodes of a TV series by season number
+
+            Args:
+                title (str): The name of the movie to retrieve
+                imdbid (str): The IMDB id of the movie to retrieve
+                season (int): The season number of the episode to retrieve
+                kwargs (dict): the kwargs to add additional parameters to the API request
+            Returns:
+                dict: A dictionary of all the results
+            Note:
+                Either `title` or `imdbid` is required '''
         return self.get_episode(title, imdbid, season, None, **kwargs)
 
     def _get_response(self, kwargs):
+        ''' wrapper for the `requests` library call '''
         return self._session.get(self._api_url, params=kwargs,
                                  timeout=self._timeout).json(encoding='utf8')
 
     def __format_results(self, res, params):
+        ''' format the results into non-camelcase dictionaries '''
         if not isinstance(res, dict):
-            raise TypeError('Expecting dict type, recieved type(res)')
+            raise TypeError('Expecting dict type, recieved {}'.format(type(res)))
 
         keys = res.keys()
         for key in keys:
