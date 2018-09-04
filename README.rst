@@ -3,6 +3,14 @@ pyomdbapi
 
 A simple OMDB API python wrapper
 
+.. image:: https://badge.fury.io/py/pyomdbapi.svg
+    :target: https://badge.fury.io/py/pyomdbapi
+.. image:: https://api.codacy.com/project/badge/Grade/e83dad34f35a44dea103100f23cd6310
+    :target: https://www.codacy.com/app/barrust/pyomdbapi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=barrust/pyomdbapi&amp;utm_campaign=Badge_Grade
+.. image:: https://img.shields.io/badge/license-MIT-blue.svg
+    :target: https://opensource.org/licenses/MIT/
+    :alt: License
+
 Documenation
 -------------------------------------------------------------------------------
 

@@ -1,5 +1,7 @@
-import setuptools
+''' Setup the pyomdbapi project '''
 import io
+import setuptools
+
 from omdb import (__version__, __author__, __license__, __email__,
                   __url__, __bugtrack_url__)
 
