@@ -18,3 +18,10 @@ Exceptions
 
 .. automodule:: omdb.exceptions
     :members:
+
+
+Utilities
++++++++++++++++++++++++++++++++
+
+.. automodule:: omdb.utilities
+    :members:

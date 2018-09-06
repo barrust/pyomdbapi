@@ -4,6 +4,7 @@ from math import ceil
 import requests
 
 from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults
+from .utilities import camelcase_to_snake_case, range_inclusive
 
 
 class OMDB(object):
@@ -53,7 +54,7 @@ class OMDB(object):
 
         results = self._get_response(params)
 
-        total_results = int(results.get('totalresults', 0))
+        total_results = int(results.get('total_results', 0))
         if not pull_all_results or total_results <= 10:  # 10 is the max that it will ever return
             return results
 
@@ -61,7 +62,7 @@ class OMDB(object):
             results['search'] = list()  # defensive
 
         max_i = ceil(total_results/10)
-        for i in range(2, max_i):
+        for i in range_inclusive(2, max_i):
             params.update({'page': i})
             data = self._get_response(params)
             results['search'].extend(data.get('search', list()))
@@ -213,7 +214,7 @@ class OMDB(object):
                 val = tmp
 
             # convert camel case to lowercase
-            res[key.lower()] = val
+            res[camelcase_to_snake_case(key)] = val
 
         # NOTE: I dislike having to use string comparisons to check for specific error conditions
         if 'response' in res and res['response'] == 'False':
