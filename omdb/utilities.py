@@ -7,16 +7,16 @@ def camelcase_to_snake_case(_input):
         Args:
             _input (str): The string to convert '''
     # https://codereview.stackexchange.com/a/185974
-    r = _input[0].lower()
+    res = _input[0].lower()
     for i, letter in enumerate(_input[1:], 1):
         if letter.isupper():
             try:
-                if _input[i-1].islower() or _input[i+1].islower():
-                    r += '_'
+                if _input[i - 1].islower() or _input[i + 1].islower():
+                    res += '_'
             except IndexError:
                 pass
-        r += letter.lower()
-    return r
+        res += letter.lower()
+    return res
 
 
 def range_inclusive(start, end, step=1):
