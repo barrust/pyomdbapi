@@ -1,7 +1,10 @@
 ''' OMDB API python wrapper library '''
+from math import ceil
+
 import requests
 
 from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults
+from .utilities import camelcase_to_snake_case, range_inclusive
 
 
 class OMDB(object):
@@ -26,22 +29,45 @@ class OMDB(object):
             self._session.close()
             self._session = None
 
-    def search(self, title, **kwargs):
+    def search(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Perform a search based on title
 
             Args:
                 title (str): The query string to lookup
+                page (int): The page of results to return
+                pull_all_results (bool): True to return all results; False to pull page only
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
-                dict: A dictionary of all the results '''
+                dict: A dictionary of all the results
+            Note:
+                If `pull_all_results` is `True` then page is ignored '''
         params = {
             's': title,
+            'page': 1,  # set to the default...
             'apikey': self._api_key
         }
+
+        if not pull_all_results:
+            params['page'] = page  # we are going to set it so that we can pull everything!
+
         params.update(kwargs)
 
-        data = self._get_response(params)
-        return self.__format_results(data, params)
+        results = self._get_response(params)
+
+        total_results = int(results.get('total_results', 0))
+        if not pull_all_results or total_results <= 10:  # 10 is the max that it will ever return
+            return results
+
+        if 'search' not in results:
+            results['search'] = list()  # defensive
+
+        max_i = ceil(total_results/10)
+        for i in range_inclusive(2, max_i):
+            params.update({'page': i})
+            data = self._get_response(params)
+            results['search'].extend(data.get('search', list()))
+
+        return results
 
     def get(self, title=None, imdbid=None, **kwargs):
         ''' Retrieve a specific movie, series, or episode
@@ -68,33 +94,35 @@ class OMDB(object):
 
         params.update(kwargs)
 
-        data = self._get_response(params)
-        return self.__format_results(data, params)
+        return self._get_response(params)
 
-    def search_movie(self, title, **kwargs):
+    def search_movie(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Search for a movie by title
 
             Args:
                 title (str): The name, or part of a name, of the movie to look up
+                pull_all_results (bool): True to return all results; False to pull page only
+                page (int): The page of results to return
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
                 dict: A dictionary of all the results '''
         params = {'type': 'movie'}
         params.update(kwargs)
-        data = self.search(title, **params)
-        return self.__format_results(data, params)
+        return self.search(title, pull_all_results, page, **params)
 
-    def search_series(self, title, **kwargs):
+    def search_series(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Search for a TV series by title
 
             Args:
                 title (str): The name, or part of a name, of the TV series to look up
+                pull_all_results (bool): True to return all results; False to pull page only
+                page (int): The page of results to return
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
                 dict: A dictionary of all the results '''
         params = {'type': 'series'}
         params.update(kwargs)
-        return self.search(title, **params)
+        return self.search(title, pull_all_results, page, **params)
 
     def get_movie(self, title=None, imdbid=None, **kwargs):
         ''' Retrieve a movie by title or IMDB id
@@ -163,8 +191,8 @@ class OMDB(object):
 
     def _get_response(self, kwargs):
         ''' wrapper for the `requests` library call '''
-        return self._session.get(self._api_url, params=kwargs,
-                                 timeout=self._timeout).json(encoding='utf8')
+        response = self._session.get(self._api_url, params=kwargs, timeout=self._timeout).json(encoding='utf8')
+        return self.__format_results(response, kwargs)
 
     def __format_results(self, res, params):
         ''' format the results into non-camelcase dictionaries '''
@@ -186,7 +214,7 @@ class OMDB(object):
                 val = tmp
 
             # convert camel case to lowercase
-            res[key.lower()] = val
+            res[camelcase_to_snake_case(key)] = val
 
         # NOTE: I dislike having to use string comparisons to check for specific error conditions
         if 'response' in res and res['response'] == 'False':
