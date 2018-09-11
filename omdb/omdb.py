@@ -3,7 +3,7 @@ from math import ceil
 
 import requests
 
-from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults
+from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults, OMDBInvalidAPIKey
 from .utilities import camelcase_to_snake_case, range_inclusive
 
 
@@ -20,7 +20,8 @@ class OMDB(object):
         ''' the init object '''
         self._api_url = 'https://www.omdbapi.com/'
         self._timeout = timeout
-        self._api_key = api_key
+        self._api_key = None
+        self.api_key = api_key
         self._session = requests.Session()
 
     def close(self):
@@ -28,6 +29,17 @@ class OMDB(object):
         if self._session:
             self._session.close()
             self._session = None
+
+    @property
+    def api_key(self):
+        return self._api_key
+
+    @api_key.setter
+    def api_key(self, val):
+        if isinstance(val, str):
+            self._api_key = val
+        else:
+            raise OMDBInvalidAPIKey(val)
 
     def search(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Perform a search based on title
@@ -44,7 +56,7 @@ class OMDB(object):
         params = {
             's': title,
             'page': 1,  # set to the default...
-            'apikey': self._api_key
+            'apikey': self.api_key
         }
 
         if not pull_all_results:
@@ -83,7 +95,7 @@ class OMDB(object):
             Note:
                 Either `title` or `imdbid` is required '''
         params = {
-            'apikey': self._api_key
+            'apikey': self.api_key
         }
         if imdbid:
             params['i'] = imdbid
@@ -224,7 +236,9 @@ class OMDB(object):
             elif err == 'movie not found!':
                 raise OMDBNoResults(res['error'], params)
             elif err == 'request limit reached!':
-                raise OMDBLimitReached(self._api_key)
+                raise OMDBLimitReached(self.api_key)
+            elif err == 'invalid api key!':
+                raise OMDBInvalidAPIKey(self.api_key)
             raise OMDBException('An unknown exception was returned: {}'.format(err))
 
         return res
