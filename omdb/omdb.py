@@ -32,10 +32,12 @@ class OMDB(object):
 
     @property
     def api_key(self):
+        ''' str: The API Key to use to connect to the OMDB API '''
         return self._api_key
 
     @api_key.setter
     def api_key(self, val):
+        ''' set the API Key '''
         if isinstance(val, str):
             self._api_key = val
         else:

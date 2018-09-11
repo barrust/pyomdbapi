@@ -33,6 +33,7 @@ class OMDBInvalidAPIKey(OMDBException):
         ''' str: The exception message '''
         return self._api_key
 
+
 class OMDBNoResults(OMDBException):
     ''' A No results returned exception
 
