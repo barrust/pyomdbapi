@@ -18,6 +18,22 @@ class OMDBException(Exception):
         return self._message
 
 
+class OMDBInvalidAPIKey(OMDBException):
+    ''' Invalide API Key provided
+
+        Args:
+            api_key (str): The API Key used that generated the exception
+    '''
+    def __init__(self, api_key):
+        self._api_key = api_key
+        super(OMDBInvalidAPIKey, self).__init__('Invalid API Key ({}) provided'.format(self.api_key))
+
+    @property
+    def api_key(self):
+        ''' str: The exception message '''
+        return self._api_key
+
+
 class OMDBNoResults(OMDBException):
     ''' A No results returned exception
 
@@ -29,7 +45,7 @@ class OMDBNoResults(OMDBException):
         ''' init '''
         self._params = params
         self._error = error
-        super(OMDBNoResults, self).__init__('message: {}\tparams: {}'.format(self._error, self._params))
+        super(OMDBNoResults, self).__init__('message: {}\tparams: {}'.format(self.error, self.params))
 
     @property
     def error(self):
@@ -53,7 +69,7 @@ class OMDBTooManyResults(OMDBException):
         ''' init '''
         self._params = params
         self._error = error
-        super(OMDBTooManyResults, self).__init__('message: {}\tparams: {}'.format(self._error, self._params))
+        super(OMDBTooManyResults, self).__init__('message: {}\tparams: {}'.format(self.error, self.params))
 
     @property
     def error(self):
@@ -75,7 +91,7 @@ class OMDBLimitReached(OMDBException):
     def __init__(self, api_key):
         ''' init '''
         self._api_key = api_key
-        super(OMDBLimitReached, self).__init__('Limit reached for API Key: {}'.format(self._api_key))
+        super(OMDBLimitReached, self).__init__('Limit reached for API Key: {}'.format(self.api_key))
 
     @property
     def api_key(self):
