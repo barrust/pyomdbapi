@@ -31,3 +31,17 @@ def range_inclusive(start, end, step=1):
     '''
     for i in range(start, end + 1, step):
         yield i
+
+
+def to_int(val):
+    ''' Turn the passed in variable into an int; returns 0 if errors
+
+        Args:
+            val (str): The variable to turn into an int
+        Returns:
+            int: The int value if possible, 0 if an error occurs
+    '''
+    try:
+        return int(val)
+    except ValueError:
+        return 0

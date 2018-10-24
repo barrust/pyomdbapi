@@ -4,7 +4,7 @@ from math import ceil
 import requests
 
 from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults, OMDBInvalidAPIKey
-from .utilities import camelcase_to_snake_case, range_inclusive
+from .utilities import camelcase_to_snake_case, range_inclusive, to_int
 
 
 class OMDB(object):
@@ -101,7 +101,7 @@ class OMDB(object):
         }
         if imdbid:
             params['i'] = imdbid
-        if title:
+        elif title:
             params['t'] = title
         else:
             raise OMDBException("Either title or imdbid is required!")
@@ -153,12 +153,13 @@ class OMDB(object):
         params.update(kwargs)
         return self.get(title, imdbid, **params)
 
-    def get_series(self, title=None, imdbid=None, **kwargs):
+    def get_series(self, title=None, imdbid=None, pull_episodes=False, **kwargs):
         ''' Retrieve a TV series information by title or IMDB id
 
             Args:
                 title (str): The name of the movie to retrieve
                 imdbid (str): The IMDB id of the movie to retrieve
+                pull_episodes (bool): `True` to pull the episodes
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
                 dict: A dictionary of all the results
@@ -166,7 +167,18 @@ class OMDB(object):
                 Either `title` or `imdbid` is required '''
         params = {'type': 'series'}
         params.update(kwargs)
-        return self.get(title, imdbid, **params)
+        res = self.get(title, imdbid, **params)
+        num_seasons = 0
+        if pull_episodes:
+            num_seasons = to_int(res.get('total_seasons', 0))
+            res['seasons'] = dict()
+
+        for i in range(num_seasons):
+            season_num = i + 1
+            season = self.get_episodes(title, imdbid, season=season_num)
+            res['seasons'][season_num] = season
+
+        return res
 
     def get_episode(self, title=None, imdbid=None, season=1, episode=1, **kwargs):
         ''' Retrieve a TV series episode by title or IMDB id and season and episode number
@@ -187,7 +199,7 @@ class OMDB(object):
         if episode:
             params['Episode'] = episode
         params.update(kwargs)
-        return self.get(title, imdbid, **params)
+        return self.get(title=title, imdbid=imdbid, **params)
 
     def get_episodes(self, title=None, imdbid=None, season=1, **kwargs):
         ''' Retrieve all episodes of a TV series by season number
@@ -201,7 +213,7 @@ class OMDB(object):
                 dict: A dictionary of all the results
             Note:
                 Either `title` or `imdbid` is required '''
-        return self.get_episode(title, imdbid, season, None, **kwargs)
+        return self.get_episode(title=title, imdbid=imdbid, season=season, episode=None, **kwargs)
 
     def _get_response(self, kwargs):
         ''' wrapper for the `requests` library call '''
