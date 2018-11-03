@@ -13,18 +13,24 @@ class OMDB(object):
         Args:
             api_key (str): The API Key to use for the requests
             timeout (float): The timeout, in seconds
+            strict (bool): To use strict error checking or not; strict (True) \
+            will throw errors if the API returns an error code, non-strict will not
         Returns:
-            OMDB: An OMDB API wrapper connection object '''
+            OMDB: An OMDB API wrapper connection object
+        Note:
+            With `strict` disabled, it is up to the user to check for and handle errors '''
 
-    __slots__ = ['_api_url', '_timeout', '_api_key', '_session']
+    __slots__ = ['_api_url', '_timeout', '_api_key', '_session', '_strict']
 
-    def __init__(self, api_key, timeout=5):
+    def __init__(self, api_key, timeout=5, strict=True):
         ''' the init object '''
         self._api_url = 'https://www.omdbapi.com/'
         self._timeout = None
         self.timeout = timeout
         self._api_key = None
         self.api_key = api_key
+        self._strict = None
+        self.strict = strict
         self._session = requests.Session()
 
     def close(self):
@@ -59,6 +65,16 @@ class OMDB(object):
         except ValueError:
             msg = "OMDB Timeout must be a float or convertable to float! {} provided".format(val)
             raise ValueError(msg)
+
+    @property
+    def strict(self):
+        ''' bool: Whether to throw or swallow errors; True will throw exceptions '''
+        return self._strict
+
+    @strict.setter
+    def strict(self, val):
+        ''' set the strict property '''
+        self._strict = bool(val)
 
     def search(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Perform a search based on title
@@ -260,7 +276,7 @@ class OMDB(object):
             res[camelcase_to_snake_case(key)] = val
 
         # NOTE: I dislike having to use string comparisons to check for specific error conditions
-        if 'response' in res and res['response'] == 'False':
+        if self.strict and 'response' in res and res['response'] == 'False':
             err = res.get('error', '').lower()
             if err == 'too many results.':
                 raise OMDBTooManyResults(res['error'], params)
