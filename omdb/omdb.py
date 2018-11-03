@@ -16,6 +16,8 @@ class OMDB(object):
         Returns:
             OMDB: An OMDB API wrapper connection object '''
 
+    __slots__ = ['_api_url', '_timeout', '_api_key', '_session']
+
     def __init__(self, api_key, timeout=5):
         ''' the init object '''
         self._api_url = 'https://www.omdbapi.com/'
