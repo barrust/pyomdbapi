@@ -21,7 +21,8 @@ class OMDB(object):
     def __init__(self, api_key, timeout=5):
         ''' the init object '''
         self._api_url = 'https://www.omdbapi.com/'
-        self._timeout = timeout
+        self._timeout = None
+        self.timeout = timeout
         self._api_key = None
         self.api_key = api_key
         self._session = requests.Session()
@@ -44,6 +45,20 @@ class OMDB(object):
             self._api_key = val
         else:
             raise OMDBInvalidAPIKey(val)
+
+    @property
+    def timeout(self):
+        ''' float: The timeout parameter to pass to requests for how long to wait '''
+        return self._timeout
+
+    @timeout.setter
+    def timeout(self, val):
+        ''' set the timeout property '''
+        try:
+            self._timeout = float(val)
+        except ValueError:
+            msg = "OMDB Timeout must be a float or convertable to float! {} provided".format(val)
+            raise ValueError(msg)
 
     def search(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Perform a search based on title
