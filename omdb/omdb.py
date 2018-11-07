@@ -4,7 +4,7 @@ from math import ceil
 import requests
 
 from .exceptions import OMDBException, OMDBNoResults, OMDBLimitReached, OMDBTooManyResults, OMDBInvalidAPIKey
-from .utilities import camelcase_to_snake_case, range_inclusive
+from .utilities import camelcase_to_snake_case, range_inclusive, to_int
 
 
 class OMDB(object):
@@ -13,15 +13,24 @@ class OMDB(object):
         Args:
             api_key (str): The API Key to use for the requests
             timeout (float): The timeout, in seconds
+            strict (bool): To use strict error checking or not; strict (True) \
+            will throw errors if the API returns an error code, non-strict will not
         Returns:
-            OMDB: An OMDB API wrapper connection object '''
+            OMDB: An OMDB API wrapper connection object
+        Note:
+            With `strict` disabled, it is up to the user to check for and handle errors '''
 
-    def __init__(self, api_key, timeout=5):
+    __slots__ = ['_api_url', '_timeout', '_api_key', '_session', '_strict']
+
+    def __init__(self, api_key, timeout=5, strict=True):
         ''' the init object '''
         self._api_url = 'https://www.omdbapi.com/'
-        self._timeout = timeout
+        self._timeout = None
+        self.timeout = timeout
         self._api_key = None
         self.api_key = api_key
+        self._strict = None
+        self.strict = strict
         self._session = requests.Session()
 
     def close(self):
@@ -42,6 +51,30 @@ class OMDB(object):
             self._api_key = val
         else:
             raise OMDBInvalidAPIKey(val)
+
+    @property
+    def timeout(self):
+        ''' float: The timeout parameter to pass to requests for how long to wait '''
+        return self._timeout
+
+    @timeout.setter
+    def timeout(self, val):
+        ''' set the timeout property '''
+        try:
+            self._timeout = float(val)
+        except ValueError:
+            msg = "OMDB Timeout must be a float or convertable to float! {} provided".format(val)
+            raise ValueError(msg)
+
+    @property
+    def strict(self):
+        ''' bool: Whether to throw or swallow errors; True will throw exceptions '''
+        return self._strict
+
+    @strict.setter
+    def strict(self, val):
+        ''' set the strict property '''
+        self._strict = bool(val)
 
     def search(self, title, pull_all_results=True, page=1, **kwargs):
         ''' Perform a search based on title
@@ -101,7 +134,7 @@ class OMDB(object):
         }
         if imdbid:
             params['i'] = imdbid
-        if title:
+        elif title:
             params['t'] = title
         else:
             raise OMDBException("Either title or imdbid is required!")
@@ -153,12 +186,13 @@ class OMDB(object):
         params.update(kwargs)
         return self.get(title, imdbid, **params)
 
-    def get_series(self, title=None, imdbid=None, **kwargs):
+    def get_series(self, title=None, imdbid=None, pull_episodes=False, **kwargs):
         ''' Retrieve a TV series information by title or IMDB id
 
             Args:
                 title (str): The name of the movie to retrieve
                 imdbid (str): The IMDB id of the movie to retrieve
+                pull_episodes (bool): `True` to pull the episodes
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
                 dict: A dictionary of all the results
@@ -166,7 +200,18 @@ class OMDB(object):
                 Either `title` or `imdbid` is required '''
         params = {'type': 'series'}
         params.update(kwargs)
-        return self.get(title, imdbid, **params)
+        res = self.get(title, imdbid, **params)
+        num_seasons = 0
+        if pull_episodes:
+            num_seasons = to_int(res.get('total_seasons', 0))
+            res['seasons'] = dict()
+
+        for i in range(num_seasons):
+            season_num = i + 1
+            season = self.get_episodes(title, imdbid, season=season_num)
+            res['seasons'][season_num] = season
+
+        return res
 
     def get_episode(self, title=None, imdbid=None, season=1, episode=1, **kwargs):
         ''' Retrieve a TV series episode by title or IMDB id and season and episode number
@@ -187,7 +232,7 @@ class OMDB(object):
         if episode:
             params['Episode'] = episode
         params.update(kwargs)
-        return self.get(title, imdbid, **params)
+        return self.get(title=title, imdbid=imdbid, **params)
 
     def get_episodes(self, title=None, imdbid=None, season=1, **kwargs):
         ''' Retrieve all episodes of a TV series by season number
@@ -201,7 +246,7 @@ class OMDB(object):
                 dict: A dictionary of all the results
             Note:
                 Either `title` or `imdbid` is required '''
-        return self.get_episode(title, imdbid, season, None, **kwargs)
+        return self.get_episode(title=title, imdbid=imdbid, season=season, episode=None, **kwargs)
 
     def _get_response(self, kwargs):
         ''' wrapper for the `requests` library call '''
@@ -231,7 +276,7 @@ class OMDB(object):
             res[camelcase_to_snake_case(key)] = val
 
         # NOTE: I dislike having to use string comparisons to check for specific error conditions
-        if 'response' in res and res['response'] == 'False':
+        if self.strict and 'response' in res and res['response'] == 'False':
             err = res.get('error', '').lower()
             if err == 'too many results.':
                 raise OMDBTooManyResults(res['error'], params)

@@ -5,11 +5,16 @@ A simple OMDB API python wrapper
 
 .. image:: https://badge.fury.io/py/pyomdbapi.svg
     :target: https://badge.fury.io/py/pyomdbapi
+    :alt: PyPy Version
 .. image:: https://api.codacy.com/project/badge/Grade/e83dad34f35a44dea103100f23cd6310
     :target: https://www.codacy.com/app/barrust/pyomdbapi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=barrust/pyomdbapi&amp;utm_campaign=Badge_Grade
+    :alt: Code Quality
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://opensource.org/licenses/MIT/
     :alt: License
+.. image:: https://pepy.tech/badge/pyomdbapi
+    :target: https://pepy.tech/project/pyomdbapi
+    :alt: Downloads
 
 Documenation
 -------------------------------------------------------------------------------
