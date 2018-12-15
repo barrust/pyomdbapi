@@ -258,7 +258,7 @@ class OMDB(object):
         if not isinstance(res, dict):
             raise TypeError('Expecting dict type, recieved {}'.format(type(res)))
 
-        keys = res.keys()
+        keys = sorted([x for x in res.keys()])
         for key in keys:
             val = res.pop(key)
             if isinstance(val, dict):
