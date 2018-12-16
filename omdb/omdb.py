@@ -116,7 +116,7 @@ class OMDB(object):
 
         return results
 
-    def get(self, title=None, imdbid=None, **kwargs):
+    def get(self, *, title=None, imdbid=None, **kwargs):
         ''' Retrieve a specific movie, series, or episode
 
             Args:
@@ -171,7 +171,7 @@ class OMDB(object):
         params.update(kwargs)
         return self.search(title, pull_all_results, page, **params)
 
-    def get_movie(self, title=None, imdbid=None, **kwargs):
+    def get_movie(self, *, title=None, imdbid=None, **kwargs):
         ''' Retrieve a movie by title or IMDB id
 
             Args:
@@ -184,9 +184,9 @@ class OMDB(object):
                 Either `title` or `imdbid` is required '''
         params = {'type': 'movie'}
         params.update(kwargs)
-        return self.get(title, imdbid, **params)
+        return self.get(title=title, imdbid=imdbid, **params)
 
-    def get_series(self, title=None, imdbid=None, pull_episodes=False, **kwargs):
+    def get_series(self, *, title=None, imdbid=None, pull_episodes=False, **kwargs):
         ''' Retrieve a TV series information by title or IMDB id
 
             Args:
@@ -200,7 +200,7 @@ class OMDB(object):
                 Either `title` or `imdbid` is required '''
         params = {'type': 'series'}
         params.update(kwargs)
-        res = self.get(title, imdbid, **params)
+        res = self.get(title=title, imdbid=imdbid, **params)
         num_seasons = 0
         if pull_episodes:
             num_seasons = to_int(res.get('total_seasons', 0))
@@ -213,7 +213,7 @@ class OMDB(object):
 
         return res
 
-    def get_episode(self, title=None, imdbid=None, season=1, episode=1, **kwargs):
+    def get_episode(self, *, title=None, imdbid=None, season=1, episode=1, **kwargs):
         ''' Retrieve a TV series episode by title or IMDB id and season and episode number
 
             Args:
@@ -234,7 +234,7 @@ class OMDB(object):
         params.update(kwargs)
         return self.get(title=title, imdbid=imdbid, **params)
 
-    def get_episodes(self, title=None, imdbid=None, season=1, **kwargs):
+    def get_episodes(self, *, title=None, imdbid=None, season=1, **kwargs):
         ''' Retrieve all episodes of a TV series by season number
 
             Args:
@@ -250,7 +250,8 @@ class OMDB(object):
 
     def _get_response(self, kwargs):
         ''' wrapper for the `requests` library call '''
-        response = self._session.get(self._api_url, params=kwargs, timeout=self._timeout).json(encoding='utf8')
+        # response = self._session.get(self._api_url, params=kwargs, timeout=self._timeout).json(encoding='utf8')
+        response = self._session.get(self._api_url, params=kwargs, timeout=self._timeout).json()
         return self.__format_results(response, kwargs)
 
     def __format_results(self, res, params):
