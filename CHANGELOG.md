@@ -1,3 +1,8 @@
+# Change Log
+
+## Version 0.2.0
+* Change to using named parameters in most cases
+* Ensure all keys are handled correctly in response
 
 ## Version 0.1.0
 * Added `timeout` property
