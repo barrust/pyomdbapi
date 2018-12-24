@@ -45,12 +45,12 @@ class OMDBNoResults(OMDBException):
         ''' init '''
         self._params = params
         self._error = error
-        super(OMDBNoResults, self).__init__('message: {}\tparams: {}'.format(self.error, self.params))
+        super(OMDBNoResults, self).__init__('\n\tmessage:\t{}\n\tparams: \t{}'.format(self.error, self.params))
 
     @property
     def error(self):
         ''' str: The OMDB API exception message '''
-        return self._message
+        return self._error
 
     @property
     def params(self):
@@ -69,12 +69,12 @@ class OMDBTooManyResults(OMDBException):
         ''' init '''
         self._params = params
         self._error = error
-        super(OMDBTooManyResults, self).__init__('message: {}\tparams: {}'.format(self.error, self.params))
+        super(OMDBTooManyResults, self).__init__('\n\tmessage:\t{}\n\tparams: \t{}'.format(self.error, self.params))
 
     @property
     def error(self):
         ''' str: The OMDB API exception message '''
-        return self._message
+        return self._error
 
     @property
     def params(self):

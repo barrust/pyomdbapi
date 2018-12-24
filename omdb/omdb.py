@@ -190,8 +190,8 @@ class OMDB(object):
         ''' Retrieve a TV series information by title or IMDB id
 
             Args:
-                title (str): The name of the movie to retrieve
-                imdbid (str): The IMDB id of the movie to retrieve
+                title (str): The name of the TV series to retrieve
+                imdbid (str): The IMDB id of the TV series to retrieve
                 pull_episodes (bool): `True` to pull the episodes
                 kwargs (dict): the kwargs to add additional parameters to the API request
             Returns:
@@ -217,8 +217,8 @@ class OMDB(object):
         ''' Retrieve a TV series episode by title or IMDB id and season and episode number
 
             Args:
-                title (str): The name of the movie to retrieve
-                imdbid (str): The IMDB id of the movie to retrieve
+                title (str): The name of the TV series to retrieve
+                imdbid (str): The IMDB id of the TV series to retrieve
                 season (int): The season number of the episode to retrieve
                 episode (int): The episode number (based on season) of the episode to retrieve
                 kwargs (dict): the kwargs to add additional parameters to the API request
@@ -238,7 +238,7 @@ class OMDB(object):
         ''' Retrieve all episodes of a TV series by season number
 
             Args:
-                title (str): The name of the movie to retrieve
+                title (str): The name of the TV series to retrieve
                 imdbid (str): The IMDB id of the movie to retrieve
                 season (int): The season number of the episode to retrieve
                 kwargs (dict): the kwargs to add additional parameters to the API request
@@ -281,7 +281,7 @@ class OMDB(object):
             err = res.get('error', '').lower()
             if err == 'too many results.':
                 raise OMDBTooManyResults(res['error'], params)
-            elif err == 'movie not found!':
+            elif err in ('movie not found!', 'series or season not found!'):
                 raise OMDBNoResults(res['error'], params)
             elif err == 'request limit reached!':
                 raise OMDBLimitReached(self.api_key)
