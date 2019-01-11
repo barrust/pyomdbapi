@@ -7,6 +7,7 @@ class OMDBException(Exception):
         Args:
             message (str): The exception message
     '''
+
     def __init__(self, message):
         ''' init '''
         self._message = message
@@ -24,6 +25,7 @@ class OMDBInvalidAPIKey(OMDBException):
         Args:
             api_key (str): The API Key used that generated the exception
     '''
+
     def __init__(self, api_key):
         self._api_key = api_key
         super(OMDBInvalidAPIKey, self).__init__('Invalid API Key ({}) provided'.format(self.api_key))
@@ -41,6 +43,7 @@ class OMDBNoResults(OMDBException):
             error (str): The error message returned by the OMDB API service
             params (dict): The parameters used when the exception was raised
     '''
+
     def __init__(self, error, params):
         ''' init '''
         self._params = params
@@ -65,6 +68,7 @@ class OMDBTooManyResults(OMDBException):
             error (str): The error message returned by the OMDB API service
             params (dict): The parameters used when the exception was raised
     '''
+
     def __init__(self, error, params):
         ''' init '''
         self._params = params
@@ -88,6 +92,7 @@ class OMDBLimitReached(OMDBException):
         Args:
             api_key (str): The API Key used when connecting to the OMDB API service
     '''
+
     def __init__(self, api_key):
         ''' init '''
         self._api_key = api_key

@@ -88,11 +88,7 @@ class OMDB(object):
                 dict: A dictionary of all the results
             Note:
                 If `pull_all_results` is `True` then page is ignored '''
-        params = {
-            's': title,
-            'page': 1,  # set to the default...
-            'apikey': self.api_key
-        }
+        params = {'s': title, 'page': 1, 'apikey': self.api_key}  # set to the default...
 
         if not pull_all_results:
             params['page'] = page  # we are going to set it so that we can pull everything!
@@ -108,7 +104,7 @@ class OMDB(object):
         if 'search' not in results:
             results['search'] = list()  # defensive
 
-        max_i = ceil(total_results/10)
+        max_i = ceil(total_results / 10)
         for i in range_inclusive(2, max_i):
             params.update({'page': i})
             data = self._get_response(params)
@@ -129,9 +125,7 @@ class OMDB(object):
                 OMDBException: Raised when both title or imdbid is not provided
             Note:
                 Either `title` or `imdbid` is required '''
-        params = {
-            'apikey': self.api_key
-        }
+        params = {'apikey': self.api_key}
         if imdbid:
             params['i'] = imdbid
         elif title:
@@ -208,7 +202,7 @@ class OMDB(object):
 
         for i in range(num_seasons):
             season_num = i + 1
-            season = self.get_episodes(title, imdbid, season=season_num)
+            season = self.get_episodes(title=title, imdbdid=imdbid, season=season_num)
             res['seasons'][season_num] = season
 
         return res
