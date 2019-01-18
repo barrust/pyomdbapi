@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 0.2.1
+* Correct exception properties
+* [black](https://github.com/ambv/black) formatting
+
 ## Version 0.2.0
 * Change to using named parameters in most cases
 * Ensure all keys are handled correctly in response
