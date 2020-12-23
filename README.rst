@@ -6,8 +6,8 @@ A simple OMDB API python wrapper
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://opensource.org/licenses/MIT/
     :alt: License
-.. image:: https://img.shields.io/github/release/barrust/pyprobables.svg
-    :target: https://github.com/barrust/pyprobables/releases
+.. image:: https://img.shields.io/github/release/barrust/pyomdbapi.svg
+    :target: https://github.com/barrust/pyomdbapi/releases
     :alt: GitHub release
 .. image:: https://badge.fury.io/py/pyomdbapi.svg
     :target: https://badge.fury.io/py/pyomdbapi
