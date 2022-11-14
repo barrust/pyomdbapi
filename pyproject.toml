@@ -1,0 +1,76 @@
+[project]
+name = "pyomdbapi"
+dynamic = ["version"]
+authors = [{ name = "Tyler Barrus", email = "barrust@gmail.com" }]
+license = { text = "MIT" }
+description = "OMDB API python wrapper"
+keywords = ["python", "omdb", "omdb-api", "API"]
+readme = "README.rst"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+    "Topic :: Internet",
+    "License :: OSI Approved",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.6"
+dependencies = ["requests>=2"]
+
+[tool.setuptools.dynamic]
+version = { attr = "omdb.__version__" }
+
+[project.urls]
+Homepage = "https://github.com/barrust/pyomdbapi"
+Bug-tracker = "https://github.com/barrust/pyomdbapi/issues"
+Documentation = "https://pyomdbapi.readthedocs.io/"
+
+[tool.poetry]
+packages = [{ include = "omdb" }]
+
+[tool.setuptools.packages.find]
+include = ["omdb"]
+
+[tool.flit.module]
+name = "omdb"
+
+[tool.distutils.bdist_wheel]
+universal = 0
+
+[tool.pep8]
+max-line-length = 120
+
+[tool.pycodestyle]
+max-line-length = 120
+
+[tool.flake8]
+max-line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 120
+target-version = ['py36']
+include = '\.pyi?$'
+
+[build-system]
+#requires = ["poetry-core>=1.0.0"]
+#build-backend = "poetry.core.masonry.api"
+
+#requires = ["flit_core>=3.2"]
+#build-backend = "flit_core.buildapi"
+
+requires = ["setuptools>=61.2.0", "wheel"]
+build-backend = "setuptools.build_meta"
