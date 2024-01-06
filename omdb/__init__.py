@@ -1,12 +1,7 @@
 """ the omdb module """
 
-from .exceptions import (
-    OMDBException,
-    OMDBLimitReached,
-    OMDBNoResults,
-    OMDBTooManyResults,
-)
-from .omdb import OMDB
+from omdb.exceptions import OMDBException, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
+from omdb.omdb import OMDB
 
 __author__ = "Tyler Barrus"
 __maintainer__ = "Tyler Barrus"

@@ -1,7 +1,7 @@
 """ A utilitites suite """
 
 
-def camelcase_to_snake_case(_input):
+def camelcase_to_snake_case(_input: str) -> str:
     """Convert a camel case string to a snake case string: CamelCase -> camel_case
 
     Args:
@@ -19,7 +19,7 @@ def camelcase_to_snake_case(_input):
     return res
 
 
-def range_inclusive(start, end, step=1):
+def range_inclusive(start: int, end: int, step: int = 1):
     """Return the range of elements inclusive of the end value
 
     Args:
@@ -32,7 +32,7 @@ def range_inclusive(start, end, step=1):
     yield from range(start, end + 1, step)
 
 
-def to_int(val):
+def to_int(val: str) -> int:
     """Turn the passed in variable into an int; returns 0 if errors
 
     Args:

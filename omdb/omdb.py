@@ -1,16 +1,11 @@
 """ OMDB API python wrapper library """
 from math import ceil
+from typing import Any, Dict, Optional
 
 import requests
 
-from .exceptions import (
-    OMDBException,
-    OMDBInvalidAPIKey,
-    OMDBLimitReached,
-    OMDBNoResults,
-    OMDBTooManyResults,
-)
-from .utilities import camelcase_to_snake_case, range_inclusive, to_int
+from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
+from omdb.utilities import camelcase_to_snake_case, range_inclusive, to_int
 
 
 class OMDB:
@@ -28,16 +23,16 @@ class OMDB:
 
     __slots__ = ["_api_url", "_timeout", "_api_key", "_session", "_strict"]
 
-    def __init__(self, api_key, timeout=5, strict=True):
+    def __init__(self, api_key: str, timeout: float = 5.0, strict: bool = True):
         """the init object"""
-        self._api_url = "https://www.omdbapi.com/"
-        self._timeout = None
+        self._api_url: str = "https://www.omdbapi.com/"
+        self._timeout: float = 5.0
         self.timeout = timeout
-        self._api_key = None
+        self._api_key: str = ""
         self.api_key = api_key
-        self._strict = None
+        self._strict: bool = True
         self.strict = strict
-        self._session = requests.Session()
+        self._session: Optional[requests.Session] = requests.Session()
 
     def close(self):
         """Close the requests connection if necessary"""
@@ -46,12 +41,12 @@ class OMDB:
             self._session = None
 
     @property
-    def api_key(self):
+    def api_key(self) -> str:
         """str: The API Key to use to connect to the OMDB API"""
         return self._api_key
 
     @api_key.setter
-    def api_key(self, val):
+    def api_key(self, val: str):
         """set the API Key"""
         if isinstance(val, str):
             self._api_key = val
@@ -59,12 +54,12 @@ class OMDB:
             raise OMDBInvalidAPIKey(val)
 
     @property
-    def timeout(self):
+    def timeout(self) -> float:
         """float: The timeout parameter to pass to requests for how long to wait"""
         return self._timeout
 
     @timeout.setter
-    def timeout(self, val):
+    def timeout(self, val: float):
         """set the timeout property"""
         try:
             self._timeout = float(val)
@@ -72,16 +67,16 @@ class OMDB:
             raise ValueError(f"OMDB Timeout must be a float or convertable to float! {val} provided") from exc
 
     @property
-    def strict(self):
+    def strict(self) -> bool:
         """bool: Whether to throw or swallow errors; True will throw exceptions"""
         return self._strict
 
     @strict.setter
-    def strict(self, val):
+    def strict(self, val: bool):
         """set the strict property"""
         self._strict = bool(val)
 
-    def search(self, title, pull_all_results=True, page=1, **kwargs):
+    def search(self, title: str, pull_all_results: bool = True, page: int = 1, **kwargs) -> Dict:
         """Perform a search based on title
 
         Args:
@@ -121,7 +116,7 @@ class OMDB:
 
         return results
 
-    def get(self, *, title=None, imdbid=None, **kwargs):
+    def get(self, *, title: Optional[str] = None, imdbid: Optional[str] = None, **kwargs) -> Dict:
         """Retrieve a specific movie, series, or episode
 
         Args:
@@ -146,7 +141,7 @@ class OMDB:
 
         return self._get_response(params)
 
-    def search_movie(self, title, pull_all_results=True, page=1, **kwargs):
+    def search_movie(self, title: str, pull_all_results: bool = True, page: int = 1, **kwargs):
         """Search for a movie by title
 
         Args:
@@ -160,7 +155,7 @@ class OMDB:
         params.update(kwargs)
         return self.search(title, pull_all_results, page, **params)
 
-    def search_series(self, title, pull_all_results=True, page=1, **kwargs):
+    def search_series(self, title: str, pull_all_results: bool = True, page: int = 1, **kwargs) -> Dict:
         """Search for a TV series by title
 
         Args:
@@ -174,7 +169,7 @@ class OMDB:
         params.update(kwargs)
         return self.search(title, pull_all_results, page, **params)
 
-    def get_movie(self, *, title=None, imdbid=None, **kwargs):
+    def get_movie(self, *, title: Optional[str] = None, imdbid: Optional[str] = None, **kwargs) -> Dict:
         """Retrieve a movie by title or IMDB id
 
         Args:
@@ -189,7 +184,9 @@ class OMDB:
         params.update(kwargs)
         return self.get(title=title, imdbid=imdbid, **params)
 
-    def get_series(self, *, title=None, imdbid=None, pull_episodes=False, **kwargs):
+    def get_series(
+        self, *, title: Optional[str] = None, imdbid: Optional[str] = None, pull_episodes: bool = False, **kwargs
+    ) -> Dict:
         """Retrieve a TV series information by title or IMDB id
 
         Args:
@@ -216,7 +213,15 @@ class OMDB:
 
         return res
 
-    def get_episode(self, *, title=None, imdbid=None, season=1, episode=1, **kwargs):
+    def get_episode(
+        self,
+        *,
+        title: Optional[str] = None,
+        imdbid: Optional[str] = None,
+        season: int = 1,
+        episode: Optional[int] = 1,
+        **kwargs,
+    ) -> Dict:
         """Retrieve a TV series episode by title or IMDB id and season and episode number
 
         Args:
@@ -229,7 +234,7 @@ class OMDB:
             dict: A dictionary of all the results
         Note:
             Either `title` or `imdbid` is required"""
-        params = {"type": "episode"}
+        params: Dict[str, Any] = {"type": "episode"}
         if season:
             params["Season"] = season
         if episode:
@@ -237,7 +242,9 @@ class OMDB:
         params.update(kwargs)
         return self.get(title=title, imdbid=imdbid, **params)
 
-    def get_episodes(self, *, title=None, imdbid=None, season=1, **kwargs):
+    def get_episodes(
+        self, *, title: Optional[str] = None, imdbid: Optional[str] = None, season: int = 1, **kwargs
+    ) -> Dict:
         """Retrieve all episodes of a TV series by season number
 
         Args:
