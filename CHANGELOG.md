@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 0.2.3
+
+* Make mypy aware
+
 ## Version 0.2.2
 
 * Add typing support
