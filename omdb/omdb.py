@@ -1,4 +1,5 @@
-""" OMDB API python wrapper library """
+"""OMDB API python wrapper library"""
+
 from math import ceil
 from typing import Any, Dict, Optional
 
