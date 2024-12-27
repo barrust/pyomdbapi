@@ -9,7 +9,8 @@ from vcr import VCR  # type: ignore
 
 from omdb import OMDB
 
-BUILD_TEST_DATA = True
+BUILD_TEST_DATA = False
+API_KEY = "supersecret"
 RECORD_MODE = "new_episodes" if BUILD_TEST_DATA else "none"
 
 
@@ -53,17 +54,17 @@ class OMDBOverloaded(OMDB):
 
 class TestOMDBSearch(unittest.TestCase):
     def test_api_key(self):
-        omdb = OMDBOverloaded(api_key="862bc10b")
-        self.assertEqual(omdb.api_key, "862bc10b")
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        self.assertEqual(omdb.api_key, API_KEY)
 
     def test_search(self):
-        omdb = OMDBOverloaded(api_key="862bc10b")
+        omdb = OMDBOverloaded(api_key=API_KEY)
         res = omdb.search("Band of Brothers")
         self.assertEqual(res["total_results"], "11")
         print(res)
 
     def test_series(self):
-        omdb = OMDBOverloaded(api_key="862bc10b")
+        omdb = OMDBOverloaded(api_key=API_KEY)
         bob = omdb.get_series(title="Band of Brothers")
 
         self.assertEqual(bob["title"], "Band of Brothers")
@@ -79,9 +80,9 @@ class TestOMDBSearch(unittest.TestCase):
         # print(got)
 
     def test_episodes(self):
-        omdb = OMDBOverloaded(api_key="862bc10b")
+        omdb = OMDBOverloaded(api_key=API_KEY)
         omdb.get_episodes(title="Band of Brothers", season=1)
 
     def test_specific_episode(self):
-        omdb = OMDBOverloaded(api_key="862bc10b")
+        omdb = OMDBOverloaded(api_key=API_KEY)
         omdb.get_episode(title="Band of Brothers", season=1, episode=5)
