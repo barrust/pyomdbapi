@@ -1,0 +1,115 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=1&s=Band+of+Brothers
+  response:
+    body:
+      string: "{\"Search\":[{\"Title\":\"Band of Brothers\",\"Year\":\"2001\",\"imdbID\":\"tt0185906\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMTQ3NTdmOTEtZTRmMi00NTg5LWI5NmUtYTNiOTc0ZmNkODU0XkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"The
+        Making of 'Band of Brothers'\",\"Year\":\"2001\",\"imdbID\":\"tt0397085\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNDk1OTk1OGYtODUzYS00ODU2LTlhMTktZDAzZTA4NjgwYTlmXkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Band
+        of Brothers\",\"Year\":\"2008\u2013\",\"imdbID\":\"tt5217254\",\"Type\":\"series\",\"Poster\":\"N/A\"},{\"Title\":\"The
+        Allman Brothers Band: Brothers of the Road\",\"Year\":\"1985\",\"imdbID\":\"tt0185149\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"The
+        Machine Gun and Skye's Band of Brothers\",\"Year\":\"2014\",\"imdbID\":\"tt3853314\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZmEzNzdkMDItYjEwOC00NjUzLWEyNWYtOTNlZDEyZjQ4OTEyXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_SX300.jpg\"},{\"Title\":\"Band
+        of Brothers: An Extra's Life\",\"Year\":\"2011\",\"imdbID\":\"tt2083142\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZTI5YWQzODQtMDRjYy00YWJmLWI0NTEtOGMxOGRlNmY1MWQ2XkEyXkFqcGdeQXVyMTc3MTYwOQ@@._V1_SX300.jpg\"},{\"Title\":\"Porcaro:
+        A Band of Brothers\",\"Year\":\"2017\",\"imdbID\":\"tt5434946\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Gold
+        Rush: Band of Brothers\",\"Year\":\"2021\",\"imdbID\":\"tt14148100\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNjRiYTk4NDMtODk3MC00YTk4LWFhYTktNTUyMzA1NTQyOWFhXkEyXkFqcGdeQXVyMDAwMDAwMw@@._V1_SX300.jpg\"},{\"Title\":\"The
+        Normies: Band of Brothers Reactions\",\"Year\":\"2020\",\"imdbID\":\"tt23055408\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMzBjNTEyMzEtYzJmNy00NzVkLWFmMmItYTRlZWYyYzMxZTVlXkEyXkFqcGdeQXVyNzExMzc0MDg@._V1_SX300.jpg\"},{\"Title\":\"Band
+        of Brothers: The 7- ELEVEN Story\",\"Year\":\"2022\",\"imdbID\":\"tt28508061\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZDYxYTc4NzYtNDZlZi00ODRkLWEzNmQtMWZkNmVmYmZhNDYyXkEyXkFqcGdeQXVyMTYyOTEzMjMz._V1_SX300.jpg\"}],\"totalResults\":\"11\",\"Response\":\"True\"}"
+    headers:
+      Age:
+      - '11147'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8c39569fe55943-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Dec 2024 20:57:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2012'
+      expires:
+      - Fri, 27 Dec 2024 18:51:50 GMT
+      last-modified:
+      - Fri, 27 Dec 2024 17:51:50 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=2&s=Band+of+Brothers
+  response:
+    body:
+      string: '{"Search":[{"Title":"Armored Saint - A Band of Brothers","Year":"2023","imdbID":"tt28577293","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjAwYTI0MjYtYzQ4NC00MTA0LWIxMWQtMjVlNWM3OWQ0OTY5XkEyXkFqcGdeQXVyMTAzOTA4NjM@._V1_SX300.jpg"}],"totalResults":"11","Response":"True"}'
+    headers:
+      Age:
+      - '11146'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8c39570cd1c97b-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Dec 2024 20:57:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '290'
+      expires:
+      - Fri, 27 Dec 2024 18:51:51 GMT
+      last-modified:
+      - Fri, 27 Dec 2024 17:51:51 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

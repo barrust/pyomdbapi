@@ -25,7 +25,7 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 dependencies = ["requests>=2"]
 
 [tool.setuptools.dynamic]
@@ -36,14 +36,8 @@ Homepage = "https://github.com/barrust/pyomdbapi"
 Bug-tracker = "https://github.com/barrust/pyomdbapi/issues"
 Documentation = "https://pyomdbapi.readthedocs.io/"
 
-[tool.poetry]
-packages = [{ include = "omdb" }]
-
 [tool.setuptools.packages.find]
 include = ["omdb"]
-
-[tool.flit.module]
-name = "omdb"
 
 [tool.distutils.bdist_wheel]
 universal = 0
@@ -66,11 +60,5 @@ target-version = ['py36']
 include = '\.pyi?$'
 
 [build-system]
-#requires = ["poetry-core>=1.0.0"]
-#build-backend = "poetry.core.masonry.api"
-
-#requires = ["flit_core>=3.2"]
-#build-backend = "flit_core.buildapi"
-
 requires = ["setuptools>=61.2.0", "wheel"]
 build-backend = "setuptools.build_meta"

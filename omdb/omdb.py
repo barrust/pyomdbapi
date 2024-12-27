@@ -1,11 +1,23 @@
-""" OMDB API python wrapper library """
+"""OMDB API python wrapper library"""
+
 from math import ceil
 from typing import Any, Dict, Optional
 
 import requests
 
-from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
-from omdb.utilities import camelcase_to_snake_case, range_inclusive, to_int
+from omdb.exceptions import (
+    OMDBException,
+    OMDBInvalidAPIKey,
+    OMDBLimitReached,
+    OMDBNoResults,
+    OMDBTooManyResults,
+)
+from omdb.utilities import (
+    camelcase_to_snake_case,
+    clean_up_strings,
+    range_inclusive,
+    to_int,
+)
 
 
 class OMDB:
@@ -185,7 +197,12 @@ class OMDB:
         return self.get(title=title, imdbid=imdbid, **params)
 
     def get_series(
-        self, *, title: Optional[str] = None, imdbid: Optional[str] = None, pull_episodes: bool = False, **kwargs
+        self,
+        *,
+        title: Optional[str] = None,
+        imdbid: Optional[str] = None,
+        pull_episodes: bool = False,
+        **kwargs,
     ) -> Dict:
         """Retrieve a TV series information by title or IMDB id
 
@@ -261,9 +278,9 @@ class OMDB:
     def _get_response(self, kwargs):
         """wrapper for the `requests` library call"""
         response = self._session.get(self._api_url, params=kwargs, timeout=self._timeout).json()
-        return self.__format_results(response, kwargs)
+        return self._format_results(response, kwargs)
 
-    def __format_results(self, res, params):
+    def _format_results(self, res, params):
         """format the results into non-camelcase dictionaries"""
         if not isinstance(res, dict):
             raise TypeError(f"Expecting dict type, recieved {type(res)}")
@@ -272,15 +289,17 @@ class OMDB:
         for key in keys:
             val = res.pop(key)
             if isinstance(val, dict):
-                val = self.__format_results(val, params)
+                val = self._format_results(val, params)
             if isinstance(val, list):
                 tmp = []
                 for _, itm in enumerate(val):
                     if isinstance(itm, dict):
-                        tmp.append(self.__format_results(itm, params))
+                        tmp.append(self._format_results(itm, params))
                     else:
                         tmp.append(itm)
                 val = tmp
+            if isinstance(val, str):
+                val = clean_up_strings(val)
 
             # convert camel case to lowercase
             res[camelcase_to_snake_case(key)] = val
