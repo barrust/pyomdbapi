@@ -1,0 +1,56 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=1&s=Man+From+Snowy+River
+  response:
+    body:
+      string: '{"Search":[{"Title":"The Man from Snowy River","Year":"1982","imdbID":"tt0084296","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZmM0YzZkYzQtZjBhNS00ZmM0LTg2OGEtNDczNGVlMmY3NDEzXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"The
+        Man from Snowy River: Arena Spectacular","Year":"2003","imdbID":"tt0351296","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjE3NjU1NzA5Nl5BMl5BanBnXkFtZTgwOTk2MTM5MDE@._V1_SX300.jpg"},{"Title":"The
+        Man from Snowy River","Year":"1920","imdbID":"tt0344025","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMWMyYjlmZDAtODA2Ny00OTQzLTkyODQtNTcxOWQ3YmM3ZTk2XkEyXkFqcGdeQXVyMzI2MDEwNA@@._V1_SX300.jpg"}],"totalResults":"3","Response":"True"}'
+    headers:
+      Age:
+      - '142'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8ecf253c88f26e-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 28 Dec 2024 04:29:24 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '707'
+      expires:
+      - Sat, 28 Dec 2024 05:27:02 GMT
+      last-modified:
+      - Sat, 28 Dec 2024 04:27:02 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

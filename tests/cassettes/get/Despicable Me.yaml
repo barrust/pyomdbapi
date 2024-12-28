@@ -1,0 +1,60 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&t=Despicable+Me
+  response:
+    body:
+      string: '{"Title":"Despicable Me","Year":"2010","Rated":"PG","Released":"09
+        Jul 2010","Runtime":"95 min","Genre":"Animation, Adventure, Comedy","Director":"Pierre
+        Coffin, Chris Renaud","Writer":"Cinco Paul, Ken Daurio, Sergio Pablos","Actors":"Steve
+        Carell, Jason Segel, Russell Brand","Plot":"Gru, a criminal mastermind, adopts
+        three orphans as pawns to carry out the biggest heist in history. His life
+        takes an unexpected turn when the little girls see the evildoer as their potential
+        father.","Language":"English","Country":"United States, France","Awards":"Nominated
+        for 1 BAFTA Award3 wins & 41 nominations total","Poster":"https://m.media-amazon.com/images/M/MV5BMTY3NjY0MTQ0Nl5BMl5BanBnXkFtZTcwMzQ2MTc0Mw@@._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"7.6/10"},{"Source":"Rotten Tomatoes","Value":"80%"},{"Source":"Metacritic","Value":"72/100"}],"Metascore":"72","imdbRating":"7.6","imdbVotes":"600,845","imdbID":"tt1323594","Type":"movie","DVD":"N/A","BoxOffice":"$251,683,815","Production":"N/A","Website":"N/A","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f8ee0d039e007fb-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 28 Dec 2024 04:41:28 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1056'
+      expires:
+      - Sat, 28 Dec 2024 05:41:28 GMT
+      last-modified:
+      - Sat, 28 Dec 2024 04:41:28 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

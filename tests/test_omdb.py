@@ -8,7 +8,7 @@ import requests
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
-from omdb.exceptions import OMDBInvalidAPIKey, OMDBNoResults
+from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults
 
 BUILD_TEST_DATA = False
 API_KEY = "supersecret"
@@ -30,7 +30,7 @@ class OMDBOverloaded(OMDB):
     def _format_results(self, res, params) -> str:
         return super()._format_results(res, params)
 
-    def __build_path(self, kwargs):
+    def _build_path(self, kwargs):
         if kwargs["apikey"] == "123456":
             val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/bad_api_key/{val}"
@@ -39,6 +39,8 @@ class OMDBOverloaded(OMDB):
             return f"exceptions/no_results/{val}"
         if "type" in kwargs and kwargs["type"] == "series":
             return f"series/{kwargs['t']}"
+        if "type" in kwargs and kwargs["type"] == "movie":
+            return f"movie/{kwargs['t']}"
         if "type" in kwargs and kwargs["type"] == "episode":
             if "Episode" in kwargs:
                 return f"episode/{kwargs['t']}/episode-{kwargs['Episode']}"
@@ -50,7 +52,7 @@ class OMDBOverloaded(OMDB):
         return str(kwargs)
 
     def _get_response(self, kwargs):
-        with self.vcr.use_cassette(path=f"./tests/cassettes/{self.__build_path(kwargs)}.yaml"):
+        with self.vcr.use_cassette(path=f"./tests/cassettes/{self._build_path(kwargs)}.yaml"):
             response = requests.get(self._api_url, params=kwargs, timeout=self._timeout).json()
         return self._format_results(response, kwargs)
 
@@ -62,6 +64,9 @@ class TestOMDBSetup(unittest.TestCase):
         self.assertEqual(omdb.strict, True)
         self.assertEqual(omdb.timeout, 5.0)
         self.assertEqual(omdb.api_key, API_KEY)
+        self.assertIsNotNone(omdb._session)
+        omdb.close()
+        self.assertIsNone(omdb._session)
 
 
 class TestOMDBExceptions(unittest.TestCase):
@@ -120,12 +125,86 @@ class TestOMDBExceptions(unittest.TestCase):
         else:
             self.assertEqual(True, False)
 
+    def test_specific_episode_fail(self):
+        def tmp_build_path(kwargs):
+            return f"exceptions/no_results/{kwargs['t']}"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBNoResults, lambda: omdb.get_episode(title="Band of Brothers", season=1, episode=22))
+
+        try:
+            omdb.get_episode(title="Band of Brothers", season=1, episode=22)
+        except OMDBNoResults as ex:
+            self.assertEqual(ex.error, "Series or episode not found!")
+        else:
+            self.assertEqual(True, False)
+
+    def test_get_missing_title_and_imdbid(self):
+        def tmp_build_path(kwargs):
+            return "exceptions/base_exception/missing-title-and-imdbid"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBException, lambda: omdb.get())
+
+        try:
+            omdb.get()
+        except OMDBException as ex:
+            self.assertEqual(str(ex), "Either title or imdbid is required!")
+        else:
+            self.assertEqual(True, False)
+
+
+class TestOMDBGet(unittest.TestCase):
+    def tmp_build_path(_, kwargs):
+        val = kwargs["t"] if "t" in kwargs else kwargs["i"]
+        return f"get/{val}"
+
+    def test_get_by_title(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = self.tmp_build_path
+
+        res = omdb.get(title="Despicable Me")
+        self.assertEqual(res["imdb_id"], "tt1323594")
+        self.assertEqual(res["title"], "Despicable Me")
+        self.assertEqual(res["rated"], "PG")
+
+    def test_get_by_imdbid(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = self.tmp_build_path
+
+        res = omdb.get(imdbid="tt1323594")
+        self.assertEqual(res["imdb_id"], "tt1323594")
+        self.assertEqual(res["title"], "Despicable Me")
+        self.assertEqual(res["rated"], "PG")
+
 
 class TestOMDBSearch(unittest.TestCase):
     def test_search(self):
         omdb = OMDBOverloaded(api_key=API_KEY)
         res = omdb.search("Band of Brothers")
         self.assertEqual(res["total_results"], "11")
+
+    def test_search_page_1(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search("Band of Brothers", pull_all_results=False, page=1)
+        self.assertEqual(res["total_results"], "11")
+        self.assertEqual(len(res["search"]), 10)
+
+    def test_search_page_2(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search("Band of Brothers", pull_all_results=False, page=2)
+        self.assertEqual(res["total_results"], "11")
+        self.assertEqual(len(res["search"]), 1)
+
+    def test_search_less_than_10(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search(title="Man From Snowy River")
+        self.assertLessEqual(int(res["total_results"]), 10)
+        self.assertEqual(res["total_results"], "3")
 
 
 class TestOMDBSeries(unittest.TestCase):
