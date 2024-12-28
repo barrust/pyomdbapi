@@ -6,6 +6,9 @@ A simple OMDB API python wrapper
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :target: https://opensource.org/licenses/MIT/
     :alt: License
+.. image:: https://codecov.io/github/barrust/pyomdbapi/graph/badge.svg?token=yTcX1HPXVv
+    :target: https://codecov.io/github/barrust/pyomdbapi
+    :alt: Codecov
 .. image:: https://img.shields.io/github/release/barrust/pyomdbapi.svg
     :target: https://github.com/barrust/pyomdbapi/releases
     :alt: GitHub release
@@ -40,7 +43,7 @@ To install ``pyomdbapi``, simply clone the `repository on GitHub
 
     $ python setup.py install
 
-`pyomdbapi` supports python versions 3.5 - 3.11
+`pyomdbapi` supports python versions 3.8 - 3.13
 
 
 Quickstart
