@@ -1,4 +1,4 @@
-"""A utilitites suite"""
+"""A utilities suite"""
 
 
 def camelcase_to_snake_case(_input: str) -> str:

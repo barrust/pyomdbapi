@@ -1,4 +1,4 @@
-""" the omdb module """
+"""the omdb module"""
 
 from omdb.exceptions import OMDBException, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
 from omdb.omdb import OMDB
