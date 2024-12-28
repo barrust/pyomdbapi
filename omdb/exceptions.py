@@ -1,5 +1,4 @@
-""" Exceptions for the pyomdbapi project """
-
+"""Exceptions for the pyomdbapi project"""
 
 from typing import Dict
 
