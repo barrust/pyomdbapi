@@ -11,35 +11,37 @@ interactions:
       User-Agent:
       - python-requests/2.32.3
     method: GET
-    uri: https://www.omdbapi.com/?apikey=supersecret&t=Band+of+Brothers
+    uri: https://www.omdbapi.com/?apikey=supersecret&i=tt596799
   response:
     body:
-      string: '{"Response":"False","Error":"Invalid API key!"}'
+      string: '{"Response":"False","Error":"Incorrect IMDb ID."}'
     headers:
       Age:
-      - '265'
+      - '591'
       CF-Cache-Status:
       - HIT
       CF-RAY:
-      - 8f8d63cb0f7782e0-IAD
+      - 8f8f8bd6be48f289-IAD
       Cache-Control:
       - public, max-age=86400
       Connection:
       - keep-alive
-      Content-Length:
-      - '47'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Sat, 28 Dec 2024 00:21:21 GMT
+      - Sat, 28 Dec 2024 06:38:13 GMT
       Server:
       - cloudflare
+      Transfer-Encoding:
+      - chunked
       access-control-allow-origin:
       - '*'
+      content-length:
+      - '49'
       expires:
-      - Sat, 28 Dec 2024 01:16:56 GMT
+      - Sat, 28 Dec 2024 07:28:22 GMT
       last-modified:
-      - Sat, 28 Dec 2024 00:16:56 GMT
+      - Sat, 28 Dec 2024 06:28:22 GMT
       vary:
       - '*, Accept-Encoding'
       x-aspnet-version:
@@ -47,6 +49,6 @@ interactions:
       x-powered-by:
       - ASP.NET
     status:
-      code: 401
-      message: Unauthorized
+      code: 200
+      message: OK
 version: 1

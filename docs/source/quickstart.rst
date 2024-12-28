@@ -27,7 +27,7 @@ To install ``pyomdbapi``, simply clone the `repository on GitHub
 
     $ python setup.py install
 
-`pyomdbapi` supports python versions 3.4 - 3.7
+`pyomdbapi` supports python versions 3.8 - 3.13+
 
 
 Basic Usage

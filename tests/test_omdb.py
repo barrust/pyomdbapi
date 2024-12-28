@@ -2,16 +2,20 @@
 Unittest class
 """
 
+import os
 import unittest
 
 import requests
+from dotenv import load_dotenv
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
 from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults, OMDBTooManyResults
 
-BUILD_TEST_DATA = False
-API_KEY = "supersecret"
+load_dotenv()
+
+BUILD_TEST_DATA = True
+API_KEY = os.getenv("OMDB_API_KEY", "supersecret")
 RECORD_MODE = "new_episodes" if BUILD_TEST_DATA else "none"
 
 
@@ -47,7 +51,7 @@ class OMDBOverloaded(OMDB):
             return f"episodes/{kwargs['t']}"
         if "s" in kwargs:
             return f"search/{kwargs['s']}"
-        print(kwargs)
+        # print(kwargs)
 
         return str(kwargs)
 
@@ -173,6 +177,38 @@ class TestOMDBExceptions(unittest.TestCase):
             self.assertEqual(ex.params, {"page": 1, "apikey": API_KEY, "s": "A"})
         else:
             self.assertEqual(True, False)
+
+    def test_something(self):
+        def tmp_build_path(kwargs):
+            return f"exceptions/no_results/{kwargs['i']}"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBNoResults, lambda: omdb.get(imdbid="tt596799"))
+
+        try:
+            omdb.get(imdbid="tt596799")
+        except OMDBNoResults as ex:
+            self.assertEqual(ex.error, "Incorrect IMDb ID.")
+        else:
+            self.assertEqual(True, False)
+
+    def test_error_getting_data(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb.get(imdbid="tt3896198")
+
+    # def test_limit_reached_error(self):
+    #     def tmp_build_path(kwargs):
+    #         return f"exceptions/limit_reached/{kwargs['s']}"
+
+    #     omdb = OMDBOverloaded(api_key=API_KEY)
+    #     omdb._build_path = tmp_build_path
+    #     try:
+    #         omdb.search("man")
+    #     except OMDBLimitReached as ex:
+    #         self.assertEqual(ex.api_key, API_KEY)
+    #         self.assertEqual(ex.message, f"Limit reached for API Key: {omdb.api_key}")
 
 
 class TestOMDBGet(unittest.TestCase):
