@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Episode=5&Season=1&apikey=supersecret&t=Band+of+Brothers&type=episode
+  response:
+    body:
+      string: '{"Title":"Crossroads","Year":"2001","Rated":"TV-MA","Released":"30
+        Sep 2001","Season":"1","Episode":"5","Runtime":"53 min","Genre":"Drama, History,
+        War","Director":"Tom Hanks","Writer":"Stephen Ambrose, Erik Jendresen","Actors":"Nicholas
+        Aaron, Kirk Acevedo, Doug Allen","Plot":"Winters writes a report on the challenge
+        of an unexpected resistance to a German attack, and is haunted by his conscience
+        after shooting a teenage German SS soldier.","Language":"English","Country":"United
+        States, United Kingdom","Awards":"N/A","Poster":"https://m.media-amazon.com/images/M/MV5BZjE2ZGExNjktMjJkNS00ODQ4LWJmOGEtOTE2ZTI1MTZkMTQxXkEyXkFqcGc@._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"8.8/10"}],"Metascore":"N/A","imdbRating":"8.8","imdbVotes":"9471","imdbID":"tt1247464","seriesID":"tt0185906","Type":"episode","Response":"True"}'
+    headers:
+      Age:
+      - '1084'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8c3958dff58003-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Dec 2024 20:57:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '851'
+      expires:
+      - Fri, 27 Dec 2024 21:39:33 GMT
+      last-modified:
+      - Fri, 27 Dec 2024 20:39:33 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

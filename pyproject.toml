@@ -17,16 +17,19 @@ classifiers = [
     "License :: OSI Approved",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.5",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 dependencies = ["requests>=2"]
+
+[project.optional-dependencies]
+dev = ["ruff", "pytest", "vcrpy", "urllib3<2.3"]
+test = ["pytest", "vcrpy", "urllib3<2.3"]
 
 [tool.setuptools.dynamic]
 version = { attr = "omdb.__version__" }
@@ -36,14 +39,8 @@ Homepage = "https://github.com/barrust/pyomdbapi"
 Bug-tracker = "https://github.com/barrust/pyomdbapi/issues"
 Documentation = "https://pyomdbapi.readthedocs.io/"
 
-[tool.poetry]
-packages = [{ include = "omdb" }]
-
 [tool.setuptools.packages.find]
 include = ["omdb"]
-
-[tool.flit.module]
-name = "omdb"
 
 [tool.distutils.bdist_wheel]
 universal = 0
@@ -66,11 +63,5 @@ target-version = ['py36']
 include = '\.pyi?$'
 
 [build-system]
-#requires = ["poetry-core>=1.0.0"]
-#build-backend = "poetry.core.masonry.api"
-
-#requires = ["flit_core>=3.2"]
-#build-backend = "flit_core.buildapi"
-
 requires = ["setuptools>=61.2.0", "wheel"]
 build-backend = "setuptools.build_meta"

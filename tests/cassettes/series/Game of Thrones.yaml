@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&t=Game+of+Thrones&type=series
+  response:
+    body:
+      string: "{\"Title\":\"Game of Thrones\",\"Year\":\"2011\u20132019\",\"Rated\":\"TV-MA\",\"Released\":\"17
+        Apr 2011\",\"Runtime\":\"57 min\",\"Genre\":\"Action, Adventure, Drama\",\"Director\":\"N/A\",\"Writer\":\"David
+        Benioff, D.B. Weiss\",\"Actors\":\"Emilia Clarke, Peter Dinklage, Kit Harington\",\"Plot\":\"Nine
+        noble families fight for control over the lands of Westeros, while an ancient
+        enemy returns after being dormant for millennia.\",\"Language\":\"English\",\"Country\":\"United
+        States, United Kingdom\",\"Awards\":\"Won 59 Primetime Emmys. 397 wins & 655
+        nominations total\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_SX300.jpg\",\"Ratings\":[{\"Source\":\"Internet
+        Movie Database\",\"Value\":\"9.2/10\"}],\"Metascore\":\"N/A\",\"imdbRating\":\"9.2\",\"imdbVotes\":\"2,370,839\",\"imdbID\":\"tt0944947\",\"Type\":\"series\",\"totalSeasons\":\"8\",\"Response\":\"True\"}"
+    headers:
+      Age:
+      - '9639'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8c3957fcc5c9a9-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Dec 2024 20:57:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '852'
+      expires:
+      - Fri, 27 Dec 2024 19:16:58 GMT
+      last-modified:
+      - Fri, 27 Dec 2024 18:16:58 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

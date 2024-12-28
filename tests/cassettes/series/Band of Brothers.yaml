@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&t=Band+of+Brothers&type=series
+  response:
+    body:
+      string: '{"Title":"Band of Brothers","Year":"2001","Rated":"TV-MA","Released":"09
+        Sep 2001","Runtime":"594 min","Genre":"Action, Drama, History","Director":"N/A","Writer":"N/A","Actors":"Scott
+        Grimes, Damian Lewis, Ron Livingston","Plot":"The story of Easy Company of
+        the U.S. Army 101st Airborne Division and their mission in World War II Europe,
+        from Operation Overlord to V-J Day.","Language":"English, German, French,
+        Dutch, Latin, Polish, Spanish","Country":"United Kingdom, United States","Awards":"Won
+        6 Primetime Emmys. 34 wins & 26 nominations total","Poster":"https://m.media-amazon.com/images/M/MV5BMTQ3NTdmOTEtZTRmMi00NTg5LWI5NmUtYTNiOTc0ZmNkODU0XkEyXkFqcGc@._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"9.4/10"}],"Metascore":"N/A","imdbRating":"9.4","imdbVotes":"549,453","imdbID":"tt0185906","Type":"series","totalSeasons":"1","Response":"True"}'
+    headers:
+      Age:
+      - '20276'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8c39576f0bd641-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 27 Dec 2024 20:57:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '876'
+      expires:
+      - Fri, 27 Dec 2024 16:19:41 GMT
+      last-modified:
+      - Fri, 27 Dec 2024 15:19:41 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
