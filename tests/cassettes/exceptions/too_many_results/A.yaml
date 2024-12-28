@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=1&s=A
+  response:
+    body:
+      string: '{"Response":"False","Error":"Too many results."}'
+    headers:
+      Age:
+      - '204'
+      CF-Cache-Status:
+      - HIT
+      CF-RAY:
+      - 8f8ef8383e65c99c-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 28 Dec 2024 04:57:27 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '48'
+      expires:
+      - Sat, 28 Dec 2024 05:54:03 GMT
+      last-modified:
+      - Sat, 28 Dec 2024 04:54:03 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -8,7 +8,7 @@ import requests
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
-from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults
+from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults, OMDBTooManyResults
 
 BUILD_TEST_DATA = False
 API_KEY = "supersecret"
@@ -154,6 +154,23 @@ class TestOMDBExceptions(unittest.TestCase):
             omdb.get()
         except OMDBException as ex:
             self.assertEqual(str(ex), "Either title or imdbid is required!")
+        else:
+            self.assertEqual(True, False)
+
+    def test_too_many_results(self):
+        def tmp_build_path(kwargs):
+            return "exceptions/too_many_results/A"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBTooManyResults, lambda: omdb.search(title="A"))
+
+        try:
+            omdb.search(title="A")
+        except OMDBTooManyResults as ex:
+            self.assertEqual(ex.error, "Too many results.")
+            self.assertEqual(ex.params, {"page": 1, "apikey": API_KEY, "s": "A"})
         else:
             self.assertEqual(True, False)
 
