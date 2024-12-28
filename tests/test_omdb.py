@@ -10,12 +10,12 @@ from dotenv import load_dotenv
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
-from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults, OMDBTooManyResults
+from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
 
 load_dotenv()
 
 BUILD_TEST_DATA = True
-API_KEY = os.getenv("OMDB_API_KEY", "supersecret")
+API_KEY = "superscret" if not BUILD_TEST_DATA else os.getenv("OMDB_API_KEY", "supersecret")
 RECORD_MODE = "new_episodes" if BUILD_TEST_DATA else "none"
 
 
@@ -194,21 +194,19 @@ class TestOMDBExceptions(unittest.TestCase):
         else:
             self.assertEqual(True, False)
 
-    def test_error_getting_data(self):
+    def test_limit_reached_error(self):
+        def tmp_build_path(kwargs):
+            return f"exceptions/limit_reached/{kwargs['s']}"
+
         omdb = OMDBOverloaded(api_key=API_KEY)
-        omdb.get(imdbid="tt3896198")
+        omdb._build_path = tmp_build_path
 
-    # def test_limit_reached_error(self):
-    #     def tmp_build_path(kwargs):
-    #         return f"exceptions/limit_reached/{kwargs['s']}"
-
-    #     omdb = OMDBOverloaded(api_key=API_KEY)
-    #     omdb._build_path = tmp_build_path
-    #     try:
-    #         omdb.search("man")
-    #     except OMDBLimitReached as ex:
-    #         self.assertEqual(ex.api_key, API_KEY)
-    #         self.assertEqual(ex.message, f"Limit reached for API Key: {omdb.api_key}")
+        self.assertRaises(OMDBLimitReached, lambda: omdb.search("order"))
+        try:
+            omdb.search("order")
+        except OMDBLimitReached as ex:
+            self.assertEqual(ex.api_key, API_KEY)
+            self.assertEqual(ex.message, f"Limit reached for API Key: {omdb.api_key}")
 
 
 class TestOMDBGet(unittest.TestCase):
@@ -280,11 +278,23 @@ class TestOMDBSeries(unittest.TestCase):
 class TestOMDBEpisodes(unittest.TestCase):
     def test_episodes(self):
         omdb = OMDBOverloaded(api_key=API_KEY)
-        omdb.get_episodes(title="Band of Brothers", season=1)
+        res = omdb.get_episodes(title="Band of Brothers", season=1)
+        self.assertEqual(res["total_seasons"], "1")
+        self.assertEqual(len(res["episodes"]), 10)
+
+        res = omdb.get_episodes(title="Psych", season=3)
+        self.assertEqual(res["total_seasons"], "8")
+        self.assertEqual(len(res["episodes"]), 16)
 
     def test_specific_episode(self):
         omdb = OMDBOverloaded(api_key=API_KEY)
-        omdb.get_episode(title="Band of Brothers", season=1, episode=5)
+        res = omdb.get_episode(title="Band of Brothers", season=1, episode=5)
+        self.assertEqual(res["title"], "Crossroads")
+        self.assertEqual(res["year"], "2001")
+
+        res = omdb.get_episode(title="Psych", season=3, episode=10)
+        self.assertEqual(res["title"], "Six Feet Under the Sea")
+        self.assertEqual(res["year"], "2009")
 
 
 class TestOMDBMovies(unittest.TestCase):
