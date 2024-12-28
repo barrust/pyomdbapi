@@ -8,7 +8,7 @@ import requests
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
-from omdb.exceptions import OMDBInvalidAPIKey
+from omdb.exceptions import OMDBInvalidAPIKey, OMDBNoResults
 
 BUILD_TEST_DATA = False
 API_KEY = "supersecret"
@@ -33,7 +33,10 @@ class OMDBOverloaded(OMDB):
     def __build_path(self, kwargs):
         if kwargs["apikey"] == "123456":
             val = kwargs["t"] if "t" in kwargs else kwargs["i"]
-            return f"bad_apikey/{val}"
+            return f"exceptions/bad_api_key/{val}"
+        if "t" in kwargs and kwargs["t"] == "Random Movie Title":
+            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
+            return f"exceptions/no_results/{val}"
         if "type" in kwargs and kwargs["type"] == "series":
             return f"series/{kwargs['t']}"
         if "type" in kwargs and kwargs["type"] == "episode":
@@ -60,6 +63,8 @@ class TestOMDBSetup(unittest.TestCase):
         self.assertEqual(omdb.timeout, 5.0)
         self.assertEqual(omdb.api_key, API_KEY)
 
+
+class TestOMDBExceptions(unittest.TestCase):
     def test_api_key_fail(self):
         self.assertRaises(OMDBInvalidAPIKey, lambda: OMDBOverloaded(api_key=None))
         try:
@@ -82,6 +87,38 @@ class TestOMDBSetup(unittest.TestCase):
     def test_bad_api_key(self):
         omdb = OMDBOverloaded(api_key="123456")
         self.assertRaises(OMDBInvalidAPIKey, lambda: omdb.get(title="Band of Brothers"))
+
+        try:
+            OMDBOverloaded(api_key="123456")
+            omdb.get(title="Band of Brothers")
+        except OMDBInvalidAPIKey as ex:
+            self.assertEqual(str(ex), "Invalid API Key (123456) provided")
+        else:
+            self.assertEqual(True, False)
+
+    def test_no_results_movie(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        self.assertRaises(OMDBNoResults, lambda: omdb.get(title="Random Movie Title"))
+
+        try:
+            omdb = OMDBOverloaded(api_key=API_KEY)
+            omdb.get(title="Random Movie Title")
+        except OMDBNoResults as ex:
+            self.assertEqual(ex.error, "Movie not found!")
+        else:
+            self.assertEqual(True, False)
+
+    def test_no_results_series(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        self.assertRaises(OMDBNoResults, lambda: omdb.get_series(title="Random Movie Title"))
+
+        try:
+            omdb = OMDBOverloaded(api_key=API_KEY)
+            omdb.get_series(title="Random Movie Title")
+        except OMDBNoResults as ex:
+            self.assertEqual(ex.error, "Series not found!")
+        else:
+            self.assertEqual(True, False)
 
 
 class TestOMDBSearch(unittest.TestCase):

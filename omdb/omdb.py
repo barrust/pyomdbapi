@@ -309,7 +309,7 @@ class OMDB:
             err = res.get("error", "").lower()
             if err == "too many results.":
                 raise OMDBTooManyResults(res["error"], params)
-            if err in ("movie not found!", "series or season not found!"):
+            if err in ("movie not found!", "series or season not found!", "series not found!"):
                 raise OMDBNoResults(res["error"], params)
             if err == "request limit reached!":
                 raise OMDBLimitReached(self.api_key)
