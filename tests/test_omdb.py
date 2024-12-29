@@ -31,9 +31,6 @@ class OMDBOverloaded(OMDB):
             path_transformer=VCR.ensure_suffix(".yaml"),
         )
 
-    def _format_results(self, res, params) -> str:
-        return super()._format_results(res, params)
-
     def _build_path(self, kwargs):
         if kwargs["apikey"] == "123456":
             val = kwargs["t"] if "t" in kwargs else kwargs["i"]
@@ -42,8 +39,12 @@ class OMDBOverloaded(OMDB):
             val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/no_results/{val}"
         if "type" in kwargs and kwargs["type"] == "series":
+            if "s" in kwargs:  # searching for series
+                return f"search/series/{kwargs['s']}"
             return f"series/{kwargs['t']}"
         if "type" in kwargs and kwargs["type"] == "movie":
+            if "s" in kwargs:  # searching for series
+                return f"search/movie/{kwargs['s']}"
             return f"movie/{kwargs['t']}"
         if "type" in kwargs and kwargs["type"] == "episode":
             if "Episode" in kwargs:
@@ -256,6 +257,28 @@ class TestOMDBSearch(unittest.TestCase):
         res = omdb.search(title="Man From Snowy River")
         self.assertLessEqual(int(res["total_results"]), 10)
         self.assertEqual(res["total_results"], "3")
+
+    def test_search_series(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search_series("malcolm")
+
+        self.assertTrue("Malcolm in the Middle" in [x["title"] for x in res["search"]])
+        self.assertEqual(res["total_results"], "18")
+        self.assertEqual(len(res["search"]), 18)
+
+    def test_search_movie(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search_movie("malcolm")
+
+        # get a specific movie
+        movie = {}
+        for m in res["search"]:
+            if m["title"] == "Malcolm" and m["year"] == "1986":
+                movie = m
+        self.assertEqual(res["total_results"], "88")
+        self.assertEqual(len(res["search"]), 88)
+        self.assertTrue(movie)
+        self.assertEqual(movie["imdb_id"], "tt0091464")
 
 
 class TestOMDBSeries(unittest.TestCase):

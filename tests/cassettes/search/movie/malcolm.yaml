@@ -1,0 +1,522 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=1&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"Malcolm X","Year":"1992","imdbID":"tt0104797","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYTQwYjFhNTMtMjliOC00MGJhLTkwYWMtYjQzZTRiYjRlNjE4XkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Malcolm
+        & Marie","Year":"2021","imdbID":"tt12676326","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZTc5ZDZjMzMtMDk4MC00N2NlLTg2MjAtOGI5OTcxNzZhMGNlXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Malcolm","Year":"1986","imdbID":"tt0091464","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMDIzNDM2YWQtNTU3ZS00NmE1LTk3ZTAtZDVkZjk1ZTI1NzNmXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Blood
+        Brothers: Malcolm X & Muhammad Ali","Year":"2021","imdbID":"tt15095938","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYzQ1Y2YxYzctYzM3Yy00NTJiLTlkMWYtNmJjYTYwZjEwYWQwXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Malcolm
+        X","Year":"1972","imdbID":"tt0068903","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjcyODhlM2YtNzE0OS00MzFiLTg5YzItODJlNDE2MGY5MTE1XkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"O
+        Lucky Malcolm!","Year":"2006","imdbID":"tt0847187","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMmE5NzBkODMtYjNlMi00ODIxLTkyZjEtMjRhYWYxNzk4ZDQ5XkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Little
+        Malcolm and His Struggle Against the Eunuchs","Year":"1974","imdbID":"tt0071760","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMzI4YmU5ZTItNzZjMS00YmE1LTk3NDQtMmQxMjY1OTJlNDdjXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Volcano:
+        An Inquiry Into the Life and Death of Malcolm Lowry","Year":"1976","imdbID":"tt0070889","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNjAyZGFhZGEtZDZkMC00MTY1LTg5ZmItOGQ4YjhjMDlmZWI2XkEyXkFqcGdeQXVyMTM3NzQ5NzQ@._V1_SX300.jpg"},{"Title":"Moving
+        Malcolm","Year":"2003","imdbID":"tt0368876","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTIzODc0MDk3MF5BMl5BanBnXkFtZTcwMjM0NDQyMQ@@._V1_SX300.jpg"},{"Title":"Married
+        2 Malcolm","Year":"2000","imdbID":"tt0192912","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZGQyMjg4YjctN2FiYy00NWIyLTk2MGUtMzY2NTY3Yjc1ZjdlXkEyXkFqcGc@._V1_SX300.jpg"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - EXPIRED
+      CF-RAY:
+      - 8f99eab9bd283b72-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:37 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2180'
+      expires:
+      - Sun, 29 Dec 2024 13:50:37 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:37 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=2&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"Brother Minister: The Assassination of Malcolm
+        X","Year":"1994","imdbID":"tt0109339","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNDA2MTYyNDE4NV5BMl5BanBnXkFtZTcwOTY5ODA3NA@@._V1_SX300.jpg"},{"Title":"Seven
+        Songs for Malcolm X","Year":"1993","imdbID":"tt0108089","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjM1ODQyOTE5OV5BMl5BanBnXkFtZTgwNjY5NzAwODE@._V1_SX300.jpg"},{"Title":"Malcolm
+        Is a Little Unwell","Year":"2018","imdbID":"tt8995254","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYTAzMGI2ZDUtZjk1ZS00MmMwLWI5ZGYtNWM5NDUwMjVkY2ZiXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_SX300.jpg"},{"Title":"The
+        Real Malcolm X","Year":"1992","imdbID":"tt0243518","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTgwODM1NDAxN15BMl5BanBnXkFtZTcwNzk5NjcxMQ@@._V1_SX300.jpg"},{"Title":"Meet
+        Mr. Malcolm","Year":"1954","imdbID":"tt0047226","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZmJmNGRkZGMtOTgxOC00NTg2LWE4YWUtMjY0M2Q1NzM3ZGJiXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"Call
+        Me Malcolm","Year":"2005","imdbID":"tt0448998","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTYxNjcxNjY5NF5BMl5BanBnXkFtZTcwODQwMjAzMQ@@._V1_SX300.jpg"},{"Title":"Malcolm","Year":"2002","imdbID":"tt0308544","Type":"movie","Poster":"N/A"},{"Title":"By
+        Any Means Necessary: The Making of ''Malcolm X''","Year":"2005","imdbID":"tt0446960","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYWE4YjYwM2EtMzFlMi00YWVlLWExNjAtNWYwNDViZmJmYjBiXkEyXkFqcGdeQXVyMTY4MjQ0NzU@._V1_SX300.jpg"},{"Title":"The
+        Speeches of Malcolm X","Year":"1997","imdbID":"tt0245464","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMjA3MTU2MDI2MV5BMl5BanBnXkFtZTcwMjYxMjkyMQ@@._V1_SX300.jpg"},{"Title":"Malcolm
+        McDowell Looks Back","Year":"2011","imdbID":"tt1992176","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZGYwYjY5NGItNzQ4MS00YzY0LWFiOWItNjljZTExODM0YzJhXkEyXkFqcGdeQXVyNDczMDU5Nw@@._V1_SX300.jpg"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eabaaa69c946-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2053'
+      expires:
+      - Sun, 29 Dec 2024 13:50:38 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=3&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"Malcolm","Year":"2023","imdbID":"tt26933576","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BY2MyOTAzMGItMjhiOC00NzkwLWJmZTEtNjNhYmQ3ZmU4ODA3XkEyXkFqcGdeQXVyMTI1OTE4NzM5._V1_SX300.jpg"},{"Title":"Malcolm
+        and Barbara: A Love Story","Year":"1999","imdbID":"tt0354721","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNzkwZmM4NmQtYzJkYi00MzhjLWEyZGUtYjllZjQxZTVlY2Y0XkEyXkFqcGdeQXVyMTI2MDA5Nw@@._V1_SX300.jpg"},{"Title":"Malcolm
+        Is Missing","Year":"2022","imdbID":"tt29939618","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BOWJjZjQ4ZjYtMDljZC00YzU4LTg4NDMtYzc0OWY5MzIyMGIzXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"When
+        Tariq Ali Met Malcolm X","Year":"2019","imdbID":"tt10927384","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMzI2MDUyNzUtYjFmYS00NjRkLWIyOTAtY2QxN2E2ZTk2OGI4XkEyXkFqcGdeQXVyMzQ4OTY2ODg@._V1_SX300.jpg"},{"Title":"Malcolm
+        and Barbara: Love''s Farewell","Year":"2007","imdbID":"tt1124103","Type":"movie","Poster":"N/A"},{"Title":"Malcolm","Year":"2023","imdbID":"tt27250351","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNDQzMWMwYTAtNzgyZS00NzkxLWI3ZDctOGYwNDU2NTVjYzBhXkEyXkFqcGdeQXVyMTExMTAyNjE2._V1_SX300.jpg"},{"Title":"Hey
+        Malcolm!","Year":"2026","imdbID":"tt28088038","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYmQ5MGIwZmEtNDhkYi00MmQxLTk1MGYtNzliODVmZDZiMzgzXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"The
+        Metropolitan Opera: X: The Life and Times of Malcolm X","Year":"2023","imdbID":"tt28136654","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNDc4MjBhZTEtMDYxYi00ZjA4LWJjYTItNWIzMGVjNGU3MzExXkEyXkFqcGdeQXVyMTY3ODkyNDkz._V1_SX300.jpg"},{"Title":"Trident
+        by Jax Malcolm the Sketch Collection","Year":"2023","imdbID":"tt30062171","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZTUzZDY1MWItNjM4Mi00YzNiLTg5MWUtMWY2MmYxZTM0ZTYxXkEyXkFqcGdeQXVyMzQwMjc5NTg@._V1_SX300.jpg"},{"Title":"Malcolm
+        X - Make It Plain On American Experience","Year":"1994","imdbID":"tt32491963","Type":"movie","Poster":"N/A"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eabc3d2cc56b-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2113'
+      expires:
+      - Sun, 29 Dec 2024 13:50:38 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=4&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"On Any Sunday: Motocross, Malcolm, and More","Year":"2001","imdbID":"tt33833198","Type":"movie","Poster":"N/A"},{"Title":"Uncle
+        Malcolm and the Witch Next Door","Year":"2007","imdbID":"tt1142989","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTc0MzIyNDg0OV5BMl5BanBnXkFtZTcwNTgzMjU1MQ@@._V1_SX300.jpg"},{"Title":"Full
+        Circle: Malcolm Smith and J.N. Roberts - The Legend Lives On","Year":"2007","imdbID":"tt1554965","Type":"movie","Poster":"N/A"},{"Title":"Malcolm","Year":"2015","imdbID":"tt1785460","Type":"movie","Poster":"N/A"},{"Title":"Life
+        at the Top: A Week with Prime Minister Malcolm Fraser","Year":"1977","imdbID":"tt1798203","Type":"movie","Poster":"N/A"},{"Title":"The
+        Life and Times of Malcolm Fraser","Year":"2004","imdbID":"tt1828329","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMTFkZDljODAtMGZkMC00Zjg0LThmZDYtNjNkZWU3YzAwMjI2XkEyXkFqcGdeQXVyMTMzOTQ0NjA@._V1_SX300.jpg"},{"Title":"Malcolm
+        Hardee: 25 Years in Showbiz","Year":"1990","imdbID":"tt1946318","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        Ferro, Rept chaser","Year":"2012","imdbID":"tt9141126","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNGMzN2Q4MTUtZWM0Ny00MjM5LWI2MGUtNTM0ZTU4NTllYzE2XkEyXkFqcGdeQXVyNDUwMDMzMTU@._V1_SX300.jpg"},{"Title":"Malcolm
+        Ferro, Rept chaser: Secrets","Year":"2014","imdbID":"tt9149872","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYzdhZDdkZmUtYWI0My00NjI2LTljMWQtN2EzNzViMmU4OTgzXkEyXkFqcGdeQXVyNDUwMDMzMTU@._V1_SX300.jpg"},{"Title":"Some
+        Call It A Conspiracy: A Malcolm London Story","Year":"2018","imdbID":"tt9403368","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZDhiMWNlN2ItNzQ5Mi00MmI5LTg5ZmQtYWYyZTQ3ZGRjM2I3XkEyXkFqcGdeQXVyMTQwNzg2MjU@._V1_SX300.jpg"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eabd8ea3c9a0-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1825'
+      expires:
+      - Sun, 29 Dec 2024 13:50:38 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=5&s=malcolm&type=movie
+  response:
+    body:
+      string: "{\"Search\":[{\"Title\":\"Cardigan Homebrew: Hello Malcolm\",\"Year\":\"2018\",\"imdbID\":\"tt9512960\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"JD
+        Lawrence's Martin, Malcolm & Me\",\"Year\":\"2019\",\"imdbID\":\"tt9536664\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNDU1ZGZlZDItZDhlZC00YmQ5LTk0M2YtODFlY2MzMGMzYTVmXkEyXkFqcGdeQXVyMTkxMTgzNTE@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        Naden: Australia's Most Hunted\",\"Year\":\"2013\",\"imdbID\":\"tt10157568\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm\",\"Year\":\"2019\",\"imdbID\":\"tt10363908\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZTNkNjU5MTctMmIxYy00ZDk1LTkxMTYtMzNjNmYyY2ExOTY1XkEyXkFqcGdeQXVyMjQ2NjA1Njg@._V1_SX300.jpg\"},{\"Title\":\"Malcolm:
+        rencontre avec l'\xE9quipe\",\"Year\":\"2014\",\"imdbID\":\"tt10511042\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        (A Visual Poem)\",\"Year\":\"2019\",\"imdbID\":\"tt10871876\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZjlkOThjNjAtZjU4MS00NTA1LWE4MzMtYzJjMWQ1OTYyMTExXkEyXkFqcGdeQXVyMTA3NDAyMjc3._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        Morley: A Studio Visit\",\"Year\":\"2010\",\"imdbID\":\"tt11218092\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BODBhYWI5YTYtY2FhMS00M2VlLTgwMTgtOTAwNzhjMGFlMzhkXkEyXkFqcGdeQXVyNTM3MDMyMDQ@._V1_SX300.jpg\"},{\"Title\":\"Malcolm\",\"Year\":\"2018\",\"imdbID\":\"tt11942240\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BYzA1NDRkZjAtNWY3OS00ZGNhLWI2ZGEtZDE1ZmRjOWU1YzM0XkEyXkFqcGdeQXVyNjU2MzQyMjc@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        McLaren - Not for Sale\",\"Year\":\"2000\",\"imdbID\":\"tt12380180\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Changing
+        Malcolm\",\"Year\":\"2021\",\"imdbID\":\"tt15131826\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMmJmYmY1ZjUtOGY0My00MzVmLThhMDgtMTI4YjM5ZGE4MjhmXkEyXkFqcGdeQXVyNzc1NjkwODE@._V1_SX300.jpg\"}],\"totalResults\":\"88\",\"Response\":\"True\"}"
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eabf5d4e56ec-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1850'
+      expires:
+      - Sun, 29 Dec 2024 13:50:38 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=6&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"132 Malcolm Street","Year":"2017","imdbID":"tt15384572","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BOTAzODAwYjAtMzVkZS00Nzg4LTg4ZGUtMTlmNzdhYmRiZTAxXkEyXkFqcGdeQXVyMTM2NDIwMTk1._V1_SX300.jpg"},{"Title":"A
+        Tribute to Malcolm X","Year":"1967","imdbID":"tt15943772","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        Revisited","Year":"2020","imdbID":"tt15978364","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        X: By Whatever Means Necessary","Year":"2011","imdbID":"tt16305570","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYmI0ZTgxOWUtMDY3Ni00MjA2LTg2YzYtYWRiMjAyNTkyMTk3XkEyXkFqcGdeQXVyMTQ2MjE4NzYx._V1_SX300.jpg"},{"Title":"The
+        Journey of Malcolm Miracle and Dave","Year":"2023","imdbID":"tt25994330","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BN2QwZGI4MGYtYTgzMC00N2MxLTk4OWQtYzM3MjQwM2QzNGYyXkEyXkFqcGc@._V1_SX300.jpg"},{"Title":"The
+        Autobiography of Malcolm X: As Told to Alex Haley (Audible Original)","Year":"2020","imdbID":"tt12718554","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNmJjZjY3OTYtNmM2Ny00OGQyLTg0YWItZTRhZDZmMmQ3NzEzXkEyXkFqcGdeQXVyMTIyMzUwNTYx._V1_SX300.jpg"},{"Title":"Malcolm","Year":"2020","imdbID":"tt12739426","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNjk4YzU5NGQtMjZkNi00OTE5LTliNGUtOWNmNDdkNWFkYThlXkEyXkFqcGdeQXVyNTczNzI3Nzc@._V1_SX300.jpg"},{"Title":"Malcolm...","Year":"2020","imdbID":"tt13106560","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BNTgxODBmNzEtYjdkZS00MjQwLTgwOTEtZmUzZGUyM2UxNjBhXkEyXkFqcGdeQXVyOTIyNTE3MTg@._V1_SX300.jpg"},{"Title":"The
+        Struggle of Malcolm Young","Year":"2016","imdbID":"tt13774234","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYmY3ODU3NmYtNDNiOS00ZjYyLTkyOGEtNWZkZTM2OGQzZDY2XkEyXkFqcGdeQXVyNjE1ODc3MTk@._V1_SX300.jpg"},{"Title":"Malcolm
+        - The Purpose","Year":"2021","imdbID":"tt13891594","Type":"movie","Poster":"N/A"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eac04a8d6fda-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1986'
+      expires:
+      - Sun, 29 Dec 2024 13:50:38 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:38 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=7&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"Who Killed Malcolm Smith?","Year":"1992","imdbID":"tt14164086","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        X: A Shining Black Prince","Year":"2020","imdbID":"tt14245602","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYzE4MzJhMDktZWRmMC00MTdiLWI1YTQtYzRlZjA1OWU2ZTY5XkEyXkFqcGdeQXVyNzIzNzM1NTE@._V1_SX300.jpg"},{"Title":"Malcolm-Sacred
+        Games","Year":"2019","imdbID":"tt14809460","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BZjUxZTAzNGItNzFlYy00Mzg4LTkyZDQtNTJjYzY3NDg3Y2FiXkEyXkFqcGdeQXVyMTExODg3MjUz._V1_SX300.jpg"},{"Title":"Malcolm
+        Lowry en Mexico","Year":"1987","imdbID":"tt0378314","Type":"movie","Poster":"N/A"},{"Title":"Malcolm''s
+        Echo: The Legacy of Malcolm X","Year":"2008","imdbID":"tt2347488","Type":"movie","Poster":"N/A"},{"Title":"Malcolm''s
+        Echo: The Legacy of Malcolm X","Year":"2008","imdbID":"tt2348348","Type":"movie","Poster":"N/A"},{"Title":"Malcolm","Year":"2012","imdbID":"tt2405898","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        X: A Day in Smethwick","Year":"2005","imdbID":"tt2485176","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        X: Soldier of Righteousness","Year":"1994","imdbID":"tt2917676","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        Moon","Year":"2013","imdbID":"tt3037170","Type":"movie","Poster":"N/A"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eac13fec81f4-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1349'
+      expires:
+      - Sun, 29 Dec 2024 13:50:39 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=8&s=malcolm&type=movie
+  response:
+    body:
+      string: "{\"Search\":[{\"Title\":\"Eeny Meeny Miney Malcolm\",\"Year\":\"2013\",\"imdbID\":\"tt3500470\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Reconnecting
+        with Cat People: An Interview with Malcolm McDowell\",\"Year\":\"2014\",\"imdbID\":\"tt3608980\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        Lowery\",\"Year\":\"2009\",\"imdbID\":\"tt3826296\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        Romero\",\"Year\":\"2014\",\"imdbID\":\"tt4136470\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"The
+        Divine Right of Malcolm Quinn\",\"Year\":\"2014\",\"imdbID\":\"tt4357338\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Martin
+        Luther King/Malcolm X: deux r\xEAves noirs\",\"Year\":\"2015\",\"imdbID\":\"tt4798994\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Conquering
+        Beauty: The Life and Music of Malcolm Forsyth\",\"Year\":\"2015\",\"imdbID\":\"tt5487706\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"King's
+        Highway: The Story of Malcolm Fairfield\",\"Year\":\"2016\",\"imdbID\":\"tt5602686\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMzM2YWFkNjgtMGZhMC00MTA4LTkyOWQtNzkwMjNlNGM5Mzk4XkEyXkFqcGdeQXVyNjU5NTA3OTU@._V1_SX300.jpg\"},{\"Title\":\"Libby
+        and Malcolm\",\"Year\":\"2017\",\"imdbID\":\"tt6258060\",\"Type\":\"movie\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        and the Magpies\",\"Year\":\"2017\",\"imdbID\":\"tt6586058\",\"Type\":\"movie\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNjNjZTE4MWQtNmQ1NS00MTVmLWI3ZWMtNzlmYzQ5M2Y4OGMyXkEyXkFqcGdeQXVyMjY3OTI4Mzk@._V1_SX300.jpg\"}],\"totalResults\":\"88\",\"Response\":\"True\"}"
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eac2df20e607-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1422'
+      expires:
+      - Sun, 29 Dec 2024 13:50:39 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=9&s=malcolm&type=movie
+  response:
+    body:
+      string: '{"Search":[{"Title":"Malcolm Frager: American Pianist","Year":"2016","imdbID":"tt6742886","Type":"movie","Poster":"N/A"},{"Title":"Malcolm
+        X: Struggle for Freedom","Year":"1966","imdbID":"tt6777132","Type":"movie","Poster":"N/A"},{"Title":"Hello,
+        Malcolm","Year":"2016","imdbID":"tt6848776","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BY2RjYjU4MTMtOGQ3ZC00MWZlLTgxZTEtMGFmZGM0NzNjODNlXkEyXkFqcGdeQXVyNDk5MjY4Mzk@._V1_SX300.jpg"},{"Title":"Unburying
+        Malcolm Miller","Year":"2017","imdbID":"tt6873550","Type":"movie","Poster":"N/A"},{"Title":"Leaving
+        Malcolm","Year":"2018","imdbID":"tt7141582","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BMWM1M2NhN2YtYTM5OS00NzJhLWI1NzUtNjA1OTNiODM0NGIzXkEyXkFqcGdeQXVyMzA1Mzc5Nzk@._V1_SX300.jpg"},{"Title":"Of
+        Malcolm","Year":"2017","imdbID":"tt7158644","Type":"movie","Poster":"https://m.media-amazon.com/images/M/MV5BYzg3NGNkOTAtYjc1Ny00NjY0LTg3ZTItNTJjNDY3YWQyMWE0XkEyXkFqcGdeQXVyMjM4MDQ3MjU@._V1_SX300.jpg"},{"Title":"Malcolm","Year":"1983","imdbID":"tt7274122","Type":"movie","Poster":"N/A"},{"Title":"A
+        day in Life of Joel Malcolm at Halloween HQ","Year":"2017","imdbID":"tt8879834","Type":"movie","Poster":"N/A"}],"totalResults":"88","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eac4aff856c8-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1233'
+      expires:
+      - Sun, 29 Dec 2024 13:50:39 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1
