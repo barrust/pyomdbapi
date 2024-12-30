@@ -1,0 +1,60 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&i=tt0190332&type=movie
+  response:
+    body:
+      string: '{"Title":"Crouching Tiger, Hidden Dragon","Year":"2000","Rated":"PG-13","Released":"12
+        Jan 2001","Runtime":"120 min","Genre":"Action, Adventure, Drama","Director":"Ang
+        Lee","Writer":"Hui-Ling Wang, James Schamus, Kuo Jung Tsai","Actors":"Chow
+        Yun-Fat, Michelle Yeoh, Ziyi Zhang","Plot":"A young Chinese warrior steals
+        a sword from a famed swordsman and then escapes into a world of romantic adventure
+        with a mysterious man in the frontier of the nation.","Language":"Mandarin,
+        Chinese","Country":"Taiwan, Hong Kong, United States, China","Awards":"Won
+        4 Oscars. 101 wins & 132 nominations total","Poster":"https://m.media-amazon.com/images/M/MV5BMzRmMTU2OWEtZjI0Ni00MGRhLThjOTItZTJiNmM4MDk0ZWU2XkEyXkFqcGc@._V1_SX300.jpg","Ratings":[{"Source":"Internet
+        Movie Database","Value":"7.9/10"},{"Source":"Rotten Tomatoes","Value":"98%"},{"Source":"Metacritic","Value":"94/100"}],"Metascore":"94","imdbRating":"7.9","imdbVotes":"285,100","imdbID":"tt0190332","Type":"movie","DVD":"N/A","BoxOffice":"$128,530,421","Production":"N/A","Website":"N/A","Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f9ef5c9793e208e-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 30 Dec 2024 03:31:59 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1058'
+      expires:
+      - Mon, 30 Dec 2024 04:31:59 GMT
+      last-modified:
+      - Mon, 30 Dec 2024 03:31:59 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

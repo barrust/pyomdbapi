@@ -45,7 +45,8 @@ class OMDBOverloaded(OMDB):
         if "type" in kwargs and kwargs["type"] == "movie":
             if "s" in kwargs:  # searching for series
                 return f"search/movie/{kwargs['s']}"
-            return f"movie/{kwargs['t']}"
+            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
+            return f"movie/{val}"
         if "type" in kwargs and kwargs["type"] == "episode":
             if "Episode" in kwargs:
                 return f"episode/{kwargs['t']}/episode-{kwargs['Episode']}"
@@ -302,13 +303,9 @@ class TestOMDBSeries(unittest.TestCase):
         bsg = omdb.get_series(title="Battlestar Galactica", pull_episodes=True)
 
         self.assertEqual(bsg["total_seasons"], "4")
-        # print(bsg["seasons"])
         for i in range(1, 5):
             season = bsg["seasons"][i]
-            # print(season)
             self.assertEqual(season["episodes"][0]["episode"], "1")
-        # print([z for z in bsg])
-        # print(bsg)
 
 
 class TestOMDBEpisodes(unittest.TestCase):
@@ -334,4 +331,18 @@ class TestOMDBEpisodes(unittest.TestCase):
 
 
 class TestOMDBMovies(unittest.TestCase):
-    pass
+    def test_get_movie(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        mov = omdb.get_movie(title="Apollo 13")
+        self.assertEqual(mov["year"], "1995")
+        self.assertEqual(mov["director"], "Ron Howard")
+        self.assertEqual(mov["runtime"], "140 min")
+        self.assertEqual(mov["imdb_id"], "tt0112384")
+
+    def test_get_movie_imdb_id(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        mov = omdb.get_movie(imdbid="tt0190332")
+        self.assertEqual(mov["year"], "2000")
+        self.assertEqual(mov["director"], "Ang Lee")
+        self.assertEqual(mov["runtime"], "120 min")
+        self.assertEqual(mov["title"], "Crouching Tiger, Hidden Dragon")
