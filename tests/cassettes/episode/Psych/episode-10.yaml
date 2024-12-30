@@ -1,0 +1,59 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Episode=10&Season=3&apikey=supersecret&t=Psych&type=episode
+  response:
+    body:
+      string: "{\"Title\":\"Six Feet Under the Sea\",\"Year\":\"2009\",\"Rated\":\"TV-PG\",\"Released\":\"09
+        Jan 2009\",\"Season\":\"3\",\"Episode\":\"10\",\"Runtime\":\"43 min\",\"Genre\":\"Comedy,
+        Crime, Mystery\",\"Director\":\"Steve Franks\",\"Writer\":\"Steve Franks\",\"Actors\":\"James
+        Roday Rodriguez, Dul\xE9 Hill, Timothy Omundson\",\"Plot\":\"Shawn and Gus
+        are hired by April MacArthur, an attractive marine biologist, who suspects
+        that a recently released sea lion's death resulted from foul play and thinks
+        wildlife television host Randy Labayda may be involved.\",\"Language\":\"English\",\"Country\":\"United
+        States\",\"Awards\":\"N/A\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMTAxODg2MDgyOTBeQTJeQWpwZ15BbWU4MDAwODM1NjIx._V1_SX300.jpg\",\"Ratings\":[],\"Metascore\":\"N/A\",\"imdbRating\":\"N/A\",\"imdbVotes\":\"918\",\"imdbID\":\"tt1189417\",\"seriesID\":\"tt0491738\",\"Type\":\"episode\",\"Response\":\"True\"}"
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f93fba14e13c5aa-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 28 Dec 2024 19:33:38 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '832'
+      expires:
+      - Sat, 28 Dec 2024 20:33:35 GMT
+      last-modified:
+      - Sat, 28 Dec 2024 19:33:35 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

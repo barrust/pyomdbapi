@@ -1,0 +1,118 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=1&s=malcolm&type=series
+  response:
+    body:
+      string: "{\"Search\":[{\"Title\":\"Malcolm in the Middle\",\"Year\":\"2000\u20132006\",\"imdbID\":\"tt0212671\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BY2M0Y2M4YTQtZDdjMC00MDZiLWI1OGEtZDdjZjBiZDE4ODU3XkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Who
+        Killed Malcolm X?\",\"Year\":\"2019\u20132020\",\"imdbID\":\"tt10948316\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZTc0YjU0M2EtZjE1Ni00NTNjLTgyNGEtZTYxZjNjN2M1ZDdiXkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        & Eddie\",\"Year\":\"1996\u20132000\",\"imdbID\":\"tt0115259\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNGFiNmJjMjItMDIwMi00MmI2LWJjMDYtMjU2ODk0MDU4MTkwXkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Mrs
+        Merton & Malcolm\",\"Year\":\"1999\",\"imdbID\":\"tt0180373\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMzkyZDZiODktNmVlNC00YzJlLTkzNzItYTBkODZlN2E0MGRjXkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        and the Magpies\",\"Year\":\"2020\u2013\",\"imdbID\":\"tt12229610\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZDQxYmVmMjktOTRlOC00MzU2LWExYTktNTRhMmEyZDNjOWE2XkEyXkFqcGdeQXVyNTY2Mzg2NA@@._V1_SX300.jpg\"},{\"Title\":\"The
+        Lost Tapes: Malcolm X\",\"Year\":\"2018\",\"imdbID\":\"tt7908780\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BYWQ2ZDkxZjItYzA2My00NmYwLTk0MTUtYmVlM2I5ODM4YTU1XkEyXkFqcGdeQXVyNzI1MjcwMg@@._V1_SX300.jpg\"},{\"Title\":\"Walkabout
+        with Malcolm Douglas\",\"Year\":\"1969\u20132001\",\"imdbID\":\"tt7901730\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZTI0NjBiZTItOTU3Yy00ZjIzLWE1NjgtOGJhOGY0MjAxN2JjXkEyXkFqcGc@._V1_SX300.jpg\"},{\"Title\":\"Making
+        Malcolm\",\"Year\":\"2019\u2013\",\"imdbID\":\"tt10355426\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BYjI0YTMzYTEtNTFiNi00Zjg0LTkwNjQtZGI1MjY2M2M1ZTI1XkEyXkFqcGdeQXVyNjcwNDU4NjI@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        Douglas in the Bush\",\"Year\":\"2009\",\"imdbID\":\"tt11346518\",\"Type\":\"series\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        Muggeridge Meets Australians\",\"Year\":\"1958\u2013\",\"imdbID\":\"tt5018454\",\"Type\":\"series\",\"Poster\":\"N/A\"}],\"totalResults\":\"18\",\"Response\":\"True\"}"
+    headers:
+      CF-Cache-Status:
+      - EXPIRED
+      CF-RAY:
+      - 8f99eac68f175790-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2049'
+      expires:
+      - Sun, 29 Dec 2024 13:50:39 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:39 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?apikey=supersecret&page=2&s=malcolm&type=series
+  response:
+    body:
+      string: "{\"Search\":[{\"Title\":\"Malcolm and the Martians\",\"Year\":\"2016\u2013\",\"imdbID\":\"tt5349088\",\"Type\":\"series\",\"Poster\":\"N/A\"},{\"Title\":\"Malcolm
+        & James\",\"Year\":\"2021\u2013\",\"imdbID\":\"tt15367926\",\"Type\":\"series\",\"Poster\":\"N/A\"},{\"Title\":\"Chasing
+        Malcolm\",\"Year\":\"2021\u2013\",\"imdbID\":\"tt15415714\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNWQ4OTkxYWMtOGJhNS00YmEwLWI2NGItZTNlN2NhMDg1MWQ4XkEyXkFqcGdeQXVyNzc1NjkwODE@._V1_SX300.jpg\"},{\"Title\":\"Catching
+        Malcolm\",\"Year\":\"2022\u2013\",\"imdbID\":\"tt17163972\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNWY3N2MyYTYtZTRkNS00OGVlLTg1NGYtOGJhNDJiYWZkZWU1XkEyXkFqcGdeQXVyNzc1NjkwODE@._V1_SX300.jpg\"},{\"Title\":\"Confessing
+        Malcolm\",\"Year\":\"2022\u2013\",\"imdbID\":\"tt19393922\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BYzYzNTQyMWEtNGQ2OC00N2Q0LWIxNTEtYjg5ZGM2NjE0NGY0XkEyXkFqcGdeQXVyNzc1NjkwODE@._V1_SX300.jpg\"},{\"Title\":\"Creating
+        Malcolm\",\"Year\":\"2022\u2013\",\"imdbID\":\"tt21980380\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BNjgyZTY3ZWQtNmQwNC00ZTlhLWFiNzYtNGZhMjEwY2NkNzg5XkEyXkFqcGdeQXVyNzc1NjkwODE@._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        - Part 1\",\"Year\":\"2022\u2013\",\"imdbID\":\"tt26229436\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BMGJkOGNhYWMtYzMyZi00NjRjLWI3YWMtM2Y2NGJhYmNlZWNkXkEyXkFqcGdeQXVyMTM0OTQ3NDIx._V1_SX300.jpg\"},{\"Title\":\"Malcolm
+        Guite\",\"Year\":\"2020\u2013\",\"imdbID\":\"tt31779422\",\"Type\":\"series\",\"Poster\":\"https://m.media-amazon.com/images/M/MV5BZGZjODk2N2EtOTJiMS00YzE3LWEyZDctMmU1MGQ1ZWQ0M2VjXkEyXkFqcGdeQXVyMDY3OTcyOQ@@._V1_SX300.jpg\"}],\"totalResults\":\"18\",\"Response\":\"True\"}"
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f99eac77e31c56e-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 29 Dec 2024 12:50:40 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1608'
+      expires:
+      - Sun, 29 Dec 2024 13:50:40 GMT
+      last-modified:
+      - Sun, 29 Dec 2024 12:50:40 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

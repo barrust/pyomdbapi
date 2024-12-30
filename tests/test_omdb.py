@@ -2,16 +2,20 @@
 Unittest class
 """
 
+import os
 import unittest
 
 import requests
+from dotenv import load_dotenv
 from vcr import VCR  # type: ignore
 
 from omdb import OMDB
-from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBNoResults, OMDBTooManyResults
+from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBLimitReached, OMDBNoResults, OMDBTooManyResults
+
+load_dotenv()
 
 BUILD_TEST_DATA = False
-API_KEY = "supersecret"
+API_KEY = "superscret" if not BUILD_TEST_DATA else os.getenv("OMDB_API_KEY", "supersecret")
 RECORD_MODE = "new_episodes" if BUILD_TEST_DATA else "none"
 
 
@@ -27,27 +31,27 @@ class OMDBOverloaded(OMDB):
             path_transformer=VCR.ensure_suffix(".yaml"),
         )
 
-    def _format_results(self, res, params) -> str:
-        return super()._format_results(res, params)
-
     def _build_path(self, kwargs):
+        if "s" in kwargs:
+            if "type" in kwargs and kwargs["type"] == "series":
+                return f"search/series/{kwargs['s']}"
+            if "type" in kwargs and kwargs["type"] == "movie":
+                return f"search/movie/{kwargs['s']}"
+            return f"search/{kwargs['s']}"
+
+        val = kwargs["t"] if "t" in kwargs else kwargs["i"]
         if kwargs["apikey"] == "123456":
-            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/bad_api_key/{val}"
         if "t" in kwargs and kwargs["t"] == "Random Movie Title":
-            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/no_results/{val}"
         if "type" in kwargs and kwargs["type"] == "series":
-            return f"series/{kwargs['t']}"
+            return f"series/{val}"
         if "type" in kwargs and kwargs["type"] == "movie":
-            return f"movie/{kwargs['t']}"
+            return f"movie/{val}"
         if "type" in kwargs and kwargs["type"] == "episode":
             if "Episode" in kwargs:
-                return f"episode/{kwargs['t']}/episode-{kwargs['Episode']}"
-            return f"episodes/{kwargs['t']}"
-        if "s" in kwargs:
-            return f"search/{kwargs['s']}"
-        print(kwargs)
+                return f"episode/{val}/episode-{kwargs['Episode']}"
+            return f"episodes/{val}"
 
         return str(kwargs)
 
@@ -174,6 +178,36 @@ class TestOMDBExceptions(unittest.TestCase):
         else:
             self.assertEqual(True, False)
 
+    def test_something(self):
+        def tmp_build_path(kwargs):
+            return f"exceptions/no_results/{kwargs['i']}"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBNoResults, lambda: omdb.get(imdbid="tt596799"))
+
+        try:
+            omdb.get(imdbid="tt596799")
+        except OMDBNoResults as ex:
+            self.assertEqual(ex.error, "Incorrect IMDb ID.")
+        else:
+            self.assertEqual(True, False)
+
+    def test_limit_reached_error(self):
+        def tmp_build_path(kwargs):
+            return f"exceptions/limit_reached/{kwargs['s']}"
+
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        omdb._build_path = tmp_build_path
+
+        self.assertRaises(OMDBLimitReached, lambda: omdb.search("order"))
+        try:
+            omdb.search("order")
+        except OMDBLimitReached as ex:
+            self.assertEqual(ex.api_key, API_KEY)
+            self.assertEqual(ex.message, f"Limit reached for API Key: {omdb.api_key}")
+
 
 class TestOMDBGet(unittest.TestCase):
     def tmp_build_path(_, kwargs):
@@ -223,6 +257,28 @@ class TestOMDBSearch(unittest.TestCase):
         self.assertLessEqual(int(res["total_results"]), 10)
         self.assertEqual(res["total_results"], "3")
 
+    def test_search_series(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search_series("malcolm")
+
+        self.assertTrue("Malcolm in the Middle" in [x["title"] for x in res["search"]])
+        self.assertEqual(res["total_results"], "18")
+        self.assertEqual(len(res["search"]), 18)
+
+    def test_search_movie(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        res = omdb.search_movie("malcolm")
+
+        # get a specific movie
+        movie = {}
+        for m in res["search"]:
+            if m["title"] == "Malcolm" and m["year"] == "1986":
+                movie = m
+        self.assertEqual(res["total_results"], "88")
+        self.assertEqual(len(res["search"]), 88)
+        self.assertTrue(movie)
+        self.assertEqual(movie["imdb_id"], "tt0091464")
+
 
 class TestOMDBSeries(unittest.TestCase):
     def test_series(self):
@@ -240,16 +296,51 @@ class TestOMDBSeries(unittest.TestCase):
         self.assertEqual(got["year"], "2011-2019")
         self.assertEqual(got["total_seasons"], "8")
 
+    def test_get_series_pull_episodes(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        bsg = omdb.get_series(title="Battlestar Galactica", pull_episodes=True)
+
+        self.assertEqual(bsg["total_seasons"], "4")
+        for i in range(1, 5):
+            season = bsg["seasons"][i]
+            self.assertEqual(season["episodes"][0]["episode"], "1")
+
 
 class TestOMDBEpisodes(unittest.TestCase):
     def test_episodes(self):
         omdb = OMDBOverloaded(api_key=API_KEY)
-        omdb.get_episodes(title="Band of Brothers", season=1)
+        res = omdb.get_episodes(title="Band of Brothers", season=1)
+        self.assertEqual(res["total_seasons"], "1")
+        self.assertEqual(len(res["episodes"]), 10)
+
+        res = omdb.get_episodes(title="Psych", season=3)
+        self.assertEqual(res["total_seasons"], "8")
+        self.assertEqual(len(res["episodes"]), 16)
 
     def test_specific_episode(self):
         omdb = OMDBOverloaded(api_key=API_KEY)
-        omdb.get_episode(title="Band of Brothers", season=1, episode=5)
+        res = omdb.get_episode(title="Band of Brothers", season=1, episode=5)
+        self.assertEqual(res["title"], "Crossroads")
+        self.assertEqual(res["year"], "2001")
+
+        res = omdb.get_episode(title="Psych", season=3, episode=10)
+        self.assertEqual(res["title"], "Six Feet Under the Sea")
+        self.assertEqual(res["year"], "2009")
 
 
 class TestOMDBMovies(unittest.TestCase):
-    pass
+    def test_get_movie(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        mov = omdb.get_movie(title="Apollo 13")
+        self.assertEqual(mov["year"], "1995")
+        self.assertEqual(mov["director"], "Ron Howard")
+        self.assertEqual(mov["runtime"], "140 min")
+        self.assertEqual(mov["imdb_id"], "tt0112384")
+
+    def test_get_movie_imdb_id(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        mov = omdb.get_movie(imdbid="tt0190332")
+        self.assertEqual(mov["year"], "2000")
+        self.assertEqual(mov["director"], "Ang Lee")
+        self.assertEqual(mov["runtime"], "120 min")
+        self.assertEqual(mov["title"], "Crouching Tiger, Hidden Dragon")

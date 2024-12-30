@@ -1,0 +1,66 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Season=3&apikey=supersecret&t=Psych&type=episode
+  response:
+    body:
+      string: '{"Title":"Psych","Season":"3","totalSeasons":"8","Episodes":[{"Title":"Ghosts","Released":"2008-07-18","Episode":"1","imdbRating":"8.1","imdbID":"tt1189416"},{"Title":"Murder?...
+        Anyone?... Anyone?... Bueller?","Released":"2008-07-25","Episode":"2","imdbRating":"8.9","imdbID":"tt1189424"},{"Title":"Daredevils!","Released":"2008-08-01","Episode":"3","imdbRating":"N/A","imdbID":"tt1189425"},{"Title":"The
+        Greatest Adventure in the History of Basic Cable","Released":"2008-08-08","Episode":"4","imdbRating":"8.5","imdbID":"tt1189426"},{"Title":"Disco
+        Didn''t Die. It Was Murdered!","Released":"2008-08-15","Episode":"5","imdbRating":"8.3","imdbID":"tt1189427"},{"Title":"There
+        Might Be Blood","Released":"2008-08-22","Episode":"6","imdbRating":"N/A","imdbID":"tt1189428"},{"Title":"Talk
+        Derby to Me","Released":"2008-09-05","Episode":"7","imdbRating":"8.1","imdbID":"tt1189429"},{"Title":"Gus
+        Walks Into a Bank","Released":"2008-09-12","Episode":"8","imdbRating":"N/A","imdbID":"tt1189430"},{"Title":"Christmas
+        Joy","Released":"2008-11-28","Episode":"9","imdbRating":"N/A","imdbID":"tt1189431"},{"Title":"Six
+        Feet Under the Sea","Released":"2009-01-09","Episode":"10","imdbRating":"N/A","imdbID":"tt1189417"},{"Title":"Lassie
+        Did a Bad, Bad Thing","Released":"2009-01-16","Episode":"11","imdbRating":"8.7","imdbID":"tt1189418"},{"Title":"Earth,
+        Wind and... Wait for It","Released":"2009-01-23","Episode":"12","imdbRating":"8.1","imdbID":"tt1189419"},{"Title":"Any
+        Given Friday Night at 10PM, 9PM Central","Released":"2009-01-30","Episode":"13","imdbRating":"N/A","imdbID":"tt1189420"},{"Title":"Truer
+        Lies","Released":"2009-02-06","Episode":"14","imdbRating":"N/A","imdbID":"tt1189421"},{"Title":"Tuesday
+        the 17th","Released":"2009-02-13","Episode":"15","imdbRating":"9.0","imdbID":"tt1189422"},{"Title":"An
+        Evening with Mr. Yang","Released":"2009-02-20","Episode":"16","imdbRating":"9.4","imdbID":"tt1189423"}],"Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f93ea95df9b0806-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 28 Dec 2024 19:21:57 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1929'
+      expires:
+      - Sat, 28 Dec 2024 20:21:57 GMT
+      last-modified:
+      - Sat, 28 Dec 2024 19:21:57 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

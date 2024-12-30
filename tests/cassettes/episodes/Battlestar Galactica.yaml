@@ -1,0 +1,255 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Season=1&apikey=supersecret&t=Battlestar+Galactica&type=episode
+  response:
+    body:
+      string: '{"Title":"Battlestar Galactica","Season":"1","totalSeasons":"4","Episodes":[{"Title":"33","Released":"2005-01-14","Episode":"1","imdbRating":"8.5","imdbID":"tt0519761"},{"Title":"Water","Released":"2005-01-14","Episode":"2","imdbRating":"7.7","imdbID":"tt0519792"},{"Title":"Bastille
+        Day","Released":"2005-01-21","Episode":"3","imdbRating":"7.6","imdbID":"tt0519763"},{"Title":"Act
+        of Contrition","Released":"2005-01-28","Episode":"4","imdbRating":"7.7","imdbID":"tt0519762"},{"Title":"You
+        Can''t Go Home Again","Released":"2005-02-04","Episode":"5","imdbRating":"8.2","imdbID":"tt0519793"},{"Title":"Litmus","Released":"2005-02-11","Episode":"6","imdbRating":"7.6","imdbID":"tt0519778"},{"Title":"Six
+        Degrees of Separation","Released":"2005-02-18","Episode":"7","imdbRating":"7.7","imdbID":"tt0519786"},{"Title":"Flesh
+        and Bone","Released":"2005-02-25","Episode":"8","imdbRating":"8.0","imdbID":"tt0519769"},{"Title":"Tigh
+        Me Up, Tigh Me Down","Released":"2005-03-04","Episode":"9","imdbRating":"7.5","imdbID":"tt0519790"},{"Title":"The
+        Hand of God","Released":"2005-03-11","Episode":"10","imdbRating":"8.4","imdbID":"tt0519789"},{"Title":"Colonial
+        Day","Released":"2005-03-18","Episode":"11","imdbRating":"7.6","imdbID":"tt0519765"},{"Title":"Kobol''s
+        Last Gleaming: Part 1","Released":"2005-03-25","Episode":"12","imdbRating":"8.3","imdbID":"tt0519774"},{"Title":"Kobol''s
+        Last Gleaming: Part 2","Released":"2005-04-01","Episode":"13","imdbRating":"8.8","imdbID":"tt0519775"}],"Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f9ed65c080705d2-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 30 Dec 2024 03:10:32 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '1495'
+      expires:
+      - Mon, 30 Dec 2024 04:10:32 GMT
+      last-modified:
+      - Mon, 30 Dec 2024 03:10:32 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Season=2&apikey=supersecret&t=Battlestar+Galactica&type=episode
+  response:
+    body:
+      string: '{"Title":"Battlestar Galactica","Season":"2","totalSeasons":"4","Episodes":[{"Title":"Scattered","Released":"2005-07-15","Episode":"1","imdbRating":"8.2","imdbID":"tt0519785"},{"Title":"Valley
+        of Darkness","Released":"2005-07-22","Episode":"2","imdbRating":"7.9","imdbID":"tt0519791"},{"Title":"Fragged","Released":"2005-07-29","Episode":"3","imdbRating":"N/A","imdbID":"tt0519771"},{"Title":"Resistance","Released":"2005-08-05","Episode":"4","imdbRating":"8.0","imdbID":"tt0519780"},{"Title":"The
+        Farm","Released":"2005-08-12","Episode":"5","imdbRating":"7.7","imdbID":"tt0519788"},{"Title":"Home:
+        Part 1","Released":"2005-08-19","Episode":"6","imdbRating":"8.0","imdbID":"tt0519772"},{"Title":"Home:
+        Part 2","Released":"2005-08-26","Episode":"7","imdbRating":"8.3","imdbID":"tt0519773"},{"Title":"Final
+        Cut","Released":"2005-09-09","Episode":"8","imdbRating":"7.7","imdbID":"tt0519768"},{"Title":"Flight
+        of the Phoenix","Released":"2005-09-16","Episode":"9","imdbRating":"8.2","imdbID":"tt0519770"},{"Title":"Pegasus","Released":"2005-09-23","Episode":"10","imdbRating":"N/A","imdbID":"tt0519779"},{"Title":"Resurrection
+        Ship: Part 1","Released":"2006-01-06","Episode":"11","imdbRating":"8.7","imdbID":"tt0519781"},{"Title":"Resurrection
+        Ship: Part 2","Released":"2006-01-13","Episode":"12","imdbRating":"8.9","imdbID":"tt0519782"},{"Title":"Epiphanies","Released":"2006-01-20","Episode":"13","imdbRating":"7.4","imdbID":"tt0519767"},{"Title":"Black
+        Market","Released":"2006-01-27","Episode":"14","imdbRating":"6.4","imdbID":"tt0519764"},{"Title":"Scar","Released":"2006-02-03","Episode":"15","imdbRating":"7.3","imdbID":"tt0519784"},{"Title":"Sacrifice","Released":"2006-02-10","Episode":"16","imdbRating":"7.0","imdbID":"tt0519783"},{"Title":"The
+        Captain''s Hand","Released":"2006-02-17","Episode":"17","imdbRating":"7.6","imdbID":"tt0519787"},{"Title":"Downloaded","Released":"2006-02-24","Episode":"18","imdbRating":"8.4","imdbID":"tt0519766"},{"Title":"Lay
+        Down Your Burdens: Part 1","Released":"2006-03-03","Episode":"19","imdbRating":"8.0","imdbID":"tt0519776"},{"Title":"Lay
+        Down Your Burdens: Part 2","Released":"2006-03-10","Episode":"20","imdbRating":"8.7","imdbID":"tt0519777"}],"Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f9ed65ddbbdd46d-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 30 Dec 2024 03:10:32 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2210'
+      expires:
+      - Mon, 30 Dec 2024 04:10:32 GMT
+      last-modified:
+      - Mon, 30 Dec 2024 03:10:32 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Season=3&apikey=supersecret&t=Battlestar+Galactica&type=episode
+  response:
+    body:
+      string: '{"Title":"Battlestar Galactica","Season":"3","totalSeasons":"4","Episodes":[{"Title":"Occupation","Released":"2006-10-06","Episode":"1","imdbRating":"8.2","imdbID":"tt0793695"},{"Title":"Precipice","Released":"2006-10-06","Episode":"2","imdbRating":"8.2","imdbID":"tt0801850"},{"Title":"Exodus:
+        Part 1","Released":"2006-10-13","Episode":"3","imdbRating":"8.1","imdbID":"tt0801849"},{"Title":"Exodus:
+        Part 2","Released":"2006-10-20","Episode":"4","imdbRating":"9.1","imdbID":"tt0867671"},{"Title":"Collaborators","Released":"2006-10-27","Episode":"5","imdbRating":"8.1","imdbID":"tt0811218"},{"Title":"Torn","Released":"2006-11-03","Episode":"6","imdbRating":"7.8","imdbID":"tt0811219"},{"Title":"A
+        Measure of Salvation","Released":"2006-11-10","Episode":"7","imdbRating":"7.6","imdbID":"tt0870871"},{"Title":"Hero","Released":"2006-11-17","Episode":"8","imdbRating":"N/A","imdbID":"tt0887220"},{"Title":"Unfinished
+        Business","Released":"2006-12-01","Episode":"9","imdbRating":"7.4","imdbID":"tt0903208"},{"Title":"The
+        Passage","Released":"2006-12-08","Episode":"10","imdbRating":"7.5","imdbID":"tt0887222"},{"Title":"The
+        Eye of Jupiter","Released":"2006-12-15","Episode":"11","imdbRating":"N/A","imdbID":"tt0887221"},{"Title":"Rapture","Released":"2007-01-21","Episode":"12","imdbRating":"8.2","imdbID":"tt0909050"},{"Title":"Taking
+        a Break from All Your Worries","Released":"2007-01-28","Episode":"13","imdbRating":"7.7","imdbID":"tt0944310"},{"Title":"The
+        Woman King","Released":"2007-02-11","Episode":"14","imdbRating":"7.0","imdbID":"tt0947108"},{"Title":"A
+        Day in the Life","Released":"2007-02-18","Episode":"15","imdbRating":"7.0","imdbID":"tt0947103"},{"Title":"Dirty
+        Hands","Released":"2007-02-25","Episode":"16","imdbRating":"7.5","imdbID":"tt0947106"},{"Title":"Maelstrom","Released":"2007-03-04","Episode":"17","imdbRating":"7.9","imdbID":"tt0944309"},{"Title":"The
+        Son Also Rises","Released":"2007-03-11","Episode":"18","imdbRating":"7.6","imdbID":"tt0947107"},{"Title":"Crossroads:
+        Part 1","Released":"2007-03-18","Episode":"19","imdbRating":"8.3","imdbID":"tt0947104"},{"Title":"Crossroads:
+        Part 2","Released":"2007-03-25","Episode":"20","imdbRating":"9.2","imdbID":"tt0947105"}],"Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f9ed65f6c7cc9bb-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 30 Dec 2024 03:10:33 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2212'
+      expires:
+      - Mon, 30 Dec 2024 04:10:32 GMT
+      last-modified:
+      - Mon, 30 Dec 2024 03:10:32 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.3
+    method: GET
+    uri: https://www.omdbapi.com/?Season=4&apikey=supersecret&t=Battlestar+Galactica&type=episode
+  response:
+    body:
+      string: '{"Title":"Battlestar Galactica","Season":"4","totalSeasons":"4","Episodes":[{"Title":"He
+        That Believeth in Me","Released":"2008-04-04","Episode":"1","imdbRating":"8.3","imdbID":"tt0993910"},{"Title":"Six
+        of One","Released":"2008-04-11","Episode":"2","imdbRating":"7.9","imdbID":"tt0993921"},{"Title":"The
+        Ties That Bind","Released":"2008-04-18","Episode":"3","imdbRating":"N/A","imdbID":"tt0993925"},{"Title":"Escape
+        Velocity","Released":"2008-04-25","Episode":"4","imdbRating":"7.4","imdbID":"tt0993926"},{"Title":"The
+        Road Less Traveled","Released":"2008-05-02","Episode":"5","imdbRating":"7.5","imdbID":"tt0993927"},{"Title":"Faith","Released":"2008-05-09","Episode":"6","imdbRating":"N/A","imdbID":"tt0993928"},{"Title":"Guess
+        What''s Coming to Dinner","Released":"2008-05-16","Episode":"7","imdbRating":"8.5","imdbID":"tt0993929"},{"Title":"Sine
+        Qua Non","Released":"2008-05-30","Episode":"8","imdbRating":"7.6","imdbID":"tt0993930"},{"Title":"The
+        Hub","Released":"2008-06-06","Episode":"9","imdbRating":"8.6","imdbID":"tt0993931"},{"Title":"Revelations","Released":"2008-06-13","Episode":"10","imdbRating":"N/A","imdbID":"tt0993911"},{"Title":"Sometimes
+        a Great Notion","Released":"2009-01-16","Episode":"11","imdbRating":"8.7","imdbID":"tt1239323"},{"Title":"A
+        Disquiet Follows My Soul","Released":"2009-01-23","Episode":"12","imdbRating":"N/A","imdbID":"tt0993913"},{"Title":"The
+        Oath","Released":"2009-01-30","Episode":"13","imdbRating":"9.0","imdbID":"tt0993914"},{"Title":"Blood
+        on the Scales","Released":"2009-02-06","Episode":"14","imdbRating":"9.1","imdbID":"tt0993915"},{"Title":"No
+        Exit","Released":"2009-02-13","Episode":"15","imdbRating":"8.4","imdbID":"tt0993916"},{"Title":"Deadlock","Released":"2009-02-20","Episode":"16","imdbRating":"7.4","imdbID":"tt0993917"},{"Title":"Someone
+        to Watch Over Me","Released":"2009-02-27","Episode":"17","imdbRating":"8.1","imdbID":"tt0993918"},{"Title":"Islanded
+        in a Stream of Stars","Released":"2009-03-06","Episode":"18","imdbRating":"N/A","imdbID":"tt0993919"},{"Title":"Daybreak:
+        Part 1","Released":"2009-03-13","Episode":"19","imdbRating":"8.4","imdbID":"tt0993920"},{"Title":"Daybreak:
+        Part 2","Released":"2009-03-20","Episode":"20","imdbRating":"9.0","imdbID":"tt0993922"},{"Title":"Daybreak:
+        Part 3","Released":"2009-03-25","Episode":"21","imdbRating":"8.6","imdbID":"tt12394444"}],"Response":"True"}'
+    headers:
+      CF-Cache-Status:
+      - MISS
+      CF-RAY:
+      - 8f9ed660cd4b68ee-IAD
+      Cache-Control:
+      - public, max-age=86400
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 30 Dec 2024 03:10:33 GMT
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '2364'
+      expires:
+      - Mon, 30 Dec 2024 04:10:33 GMT
+      last-modified:
+      - Mon, 30 Dec 2024 03:10:33 GMT
+      vary:
+      - '*, Accept-Encoding'
+      x-aspnet-version:
+      - 4.0.30319
+      x-powered-by:
+      - ASP.NET
+    status:
+      code: 200
+      message: OK
+version: 1

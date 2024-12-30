@@ -303,12 +303,15 @@ class OMDB:
                 "series or season not found!",
                 "series not found!",
                 "series or episode not found!",
+                "incorrect imdb id.",
             }:
                 raise OMDBNoResults(res["error"], params)
             if err == "request limit reached!":
                 raise OMDBLimitReached(self.api_key)
             if err == "invalid api key!":
                 raise OMDBInvalidAPIKey(self.api_key)
+            # known reasons:
+            # Error getting data.
             raise OMDBException(f"An unknown exception was returned: {err}")
 
         return res

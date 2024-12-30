@@ -28,8 +28,8 @@ requires-python = ">=3.8"
 dependencies = ["requests>=2"]
 
 [project.optional-dependencies]
-dev = ["ruff", "pytest", "vcrpy", "urllib3<2.3"]
-test = ["pytest", "vcrpy", "urllib3<2.3"]
+dev = ["ruff", "pytest", "vcrpy", "urllib3<2.3", "python-dotenv"]
+test = ["pytest", "vcrpy", "urllib3<2.3", "python-dotenv"]
 
 [tool.setuptools.dynamic]
 version = { attr = "omdb.__version__" }
