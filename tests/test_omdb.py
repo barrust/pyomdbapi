@@ -297,6 +297,19 @@ class TestOMDBSeries(unittest.TestCase):
         self.assertEqual(got["year"], "2011-2019")
         self.assertEqual(got["total_seasons"], "8")
 
+    def test_get_series_pull_episodes(self):
+        omdb = OMDBOverloaded(api_key=API_KEY)
+        bsg = omdb.get_series(title="Battlestar Galactica", pull_episodes=True)
+
+        self.assertEqual(bsg["total_seasons"], "4")
+        # print(bsg["seasons"])
+        for i in range(1, 5):
+            season = bsg["seasons"][i]
+            # print(season)
+            self.assertEqual(season["episodes"][0]["episode"], "1")
+        # print([z for z in bsg])
+        # print(bsg)
+
 
 class TestOMDBEpisodes(unittest.TestCase):
     def test_episodes(self):
