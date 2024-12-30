@@ -14,7 +14,7 @@ from omdb.exceptions import OMDBException, OMDBInvalidAPIKey, OMDBLimitReached, 
 
 load_dotenv()
 
-BUILD_TEST_DATA = True
+BUILD_TEST_DATA = False
 API_KEY = "superscret" if not BUILD_TEST_DATA else os.getenv("OMDB_API_KEY", "supersecret")
 RECORD_MODE = "new_episodes" if BUILD_TEST_DATA else "none"
 
@@ -32,28 +32,26 @@ class OMDBOverloaded(OMDB):
         )
 
     def _build_path(self, kwargs):
+        if "s" in kwargs:
+            if "type" in kwargs and kwargs["type"] == "series":
+                return f"search/series/{kwargs['s']}"
+            if "type" in kwargs and kwargs["type"] == "movie":
+                return f"search/movie/{kwargs['s']}"
+            return f"search/{kwargs['s']}"
+
+        val = kwargs["t"] if "t" in kwargs else kwargs["i"]
         if kwargs["apikey"] == "123456":
-            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/bad_api_key/{val}"
         if "t" in kwargs and kwargs["t"] == "Random Movie Title":
-            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"exceptions/no_results/{val}"
         if "type" in kwargs and kwargs["type"] == "series":
-            if "s" in kwargs:  # searching for series
-                return f"search/series/{kwargs['s']}"
-            return f"series/{kwargs['t']}"
+            return f"series/{val}"
         if "type" in kwargs and kwargs["type"] == "movie":
-            if "s" in kwargs:  # searching for series
-                return f"search/movie/{kwargs['s']}"
-            val = kwargs["t"] if "t" in kwargs else kwargs["i"]
             return f"movie/{val}"
         if "type" in kwargs and kwargs["type"] == "episode":
             if "Episode" in kwargs:
-                return f"episode/{kwargs['t']}/episode-{kwargs['Episode']}"
-            return f"episodes/{kwargs['t']}"
-        if "s" in kwargs:
-            return f"search/{kwargs['s']}"
-        # print(kwargs)
+                return f"episode/{val}/episode-{kwargs['Episode']}"
+            return f"episodes/{val}"
 
         return str(kwargs)
 
