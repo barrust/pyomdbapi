@@ -214,7 +214,7 @@ class OMDB:
 
         for i in range(num_seasons):
             season_num = i + 1
-            season = self.get_episodes(title=title, imdbdid=imdbid, season=season_num)
+            season = self.get_episodes(title=title, imdbid=imdbid, season=season_num)
             res["seasons"][season_num] = season
 
         return res
