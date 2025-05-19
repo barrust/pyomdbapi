@@ -156,5 +156,5 @@ docstring-code-format = false
 docstring-code-line-length = "dynamic"
 
 [build-system]
-requires = ["setuptools>=61.2.0", "wheel"]
+requires = ["setuptools>=77.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
