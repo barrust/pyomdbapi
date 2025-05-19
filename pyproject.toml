@@ -2,7 +2,7 @@
 name = "pyomdbapi"
 dynamic = ["version"]
 authors = [{ name = "Tyler Barrus", email = "barrust@gmail.com" }]
-license = { text = "MIT" }
+license = "MIT"
 description = "OMDB API python wrapper"
 keywords = ["python", "omdb", "omdb-api", "API"]
 readme = "README.rst"
@@ -14,8 +14,6 @@ classifiers = [
     "Topic :: Software Development :: Libraries",
     "Topic :: Utilities",
     "Topic :: Internet",
-    "License :: OSI Approved",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -42,8 +40,8 @@ Documentation = "https://pyomdbapi.readthedocs.io/"
 [tool.setuptools.packages.find]
 include = ["omdb"]
 
-[tool.distutils.bdist_wheel]
-universal = 0
+# [tool.distutils.bdist_wheel]
+# universal = 0
 
 [tool.pep8]
 max-line-length = 120
