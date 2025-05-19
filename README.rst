@@ -43,7 +43,7 @@ To install ``pyomdbapi``, simply clone the `repository on GitHub
 
     $ python setup.py install
 
-`pyomdbapi` supports python versions 3.8 - 3.13
+`pyomdbapi` supports python versions 3.9 - 3.13
 
 
 Quickstart
