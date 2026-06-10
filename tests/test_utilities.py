@@ -21,9 +21,7 @@ class TestCamelcaseToSnakeCase(unittest.TestCase):
     def test_long_string(self):
         s = "ThisIsALongCamelCaseString" * 1000
         res = ["this_is_a_long_camel_case_string"] * 1000
-        self.assertEqual(
-            camelcase_to_snake_case(s), "_".join(res)
-        )
+        self.assertEqual(camelcase_to_snake_case(s), "_".join(res))
 
 
 if __name__ == "__main__":
